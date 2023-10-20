@@ -105,11 +105,44 @@ npm run dev
 
 ------
 
-## JSX
+## Mouse events
 
 ``` javascript
 
 ```
 
+`useState`
 
+* Generates a variable linked to a function varname and setVarname(), this makes the site react to changes in this variable
+
+`useEffect`
+
+* Triggers a function when a variable changes
+
+``` javascript
+import { useState, useEffect } from 'react'    // useState - data that will change dynamically, UseEffect - will say when the component will be rendered
+
+
+export default function Clicker()
+{
+    const [ count, setCount ] = useState(parseInt(localStorage.getItem('count') ?? 0))  // Save value locally
+
+    useEffect(() => {
+        localStorage.setItem('count', count) 
+    }, [ count ])
+
+    let buttonClick = () =>
+    {
+        setCount(count + 1)
+    }
+
+    return (
+      <>
+        <div> Click count: { count } </div>
+        <button onClick={ buttonClick }>Click me</button>
+      </>
+    )
+}
+
+```
 
