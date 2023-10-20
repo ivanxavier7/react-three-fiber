@@ -1,5 +1,8 @@
 # 1 - React
 
+[React Docs](https://react.dev/learn)
+[React Courses](https://legacy.reactjs.org/community/courses.html)
+
 1. Setup
 2. JSX
 3. Conditional rendering
