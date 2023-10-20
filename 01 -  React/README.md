@@ -181,7 +181,151 @@ export default function App()
 
 ------
 
-## Props
+## 4 - Properties
 
-Multiple `Clickers` using the same local storage variable, when we update the page the last value to be updated will be shared by the other `Clickers`
+Multiple `Clickers` using the same local storage variable, when we update the page the last value to be updated will be shared by the other `Clickers`, we can catch the content inside one component with the `{ children }` property
 
+Click with property to fix the problem
+
+`App.jsx`
+
+``` javascript	
+<Clicker keyName={'countA'}/>
+<Clicker keyName={'countB'}/>
+<Clicker keyName={'countC'}/>
+```
+
+`Clicker.jsx`
+
+``` javascript
+export default function Clicker({keyName})
+{
+    const [ count, setCount ] = useState(parseInt(localStorage.getItem(keyName) ?? 0))
+
+    useEffect(() => {
+      return () =>
+      {
+        localStorage.removeItem(keyName)
+      }
+    }, [])  
+
+    useEffect(() => {
+        localStorage.setItem(keyName, count) 
+    }, [ count ])   
+    // (...)
+}
+```
+
+-------
+
+## 5 - For cycle
+
+We can use the `map()` function to cycle through functions through each element of an array and use its index
+
+``` javascript
+const tempArray = [...Array(clickersCount)] // Spread operator, converts null in undefined, fills the array
+console.log(tempArray)
+// Now we can loop 4 times
+// Map go though each item on the array and call a function on it
+tempArray.map((value, index) =>{
+    console.log(value, index)
+})
+```
+
+### Implementation
+
+`index.jsx`
+``` javascript
+<App clickersCount={ 3 } />
+```
+
+`App.jsx`
+``` javascript
+{ [...Array(clickersCount)].map((value, index) => 
+    <Clicker
+        key={index}
+        increment={ increment }
+        keyName={`count${index}`}
+        color={`hsl(${ Math.random() * 360 }deg, 100%, 70%)`}
+    />
+)}
+```
+
+------
+
+## 6 - useMemo
+
+When we need to use the cache to store some information we must use `useMemo`
+
+``` javascript
+import { useState, useMemo } from "react"
+
+const colors = useMemo(() => {
+    const colors = []
+
+    for(let i=0; i<clickersCount; i++)
+        colors.push(`hsl(${ Math.random() * 360 }deg, 100%, 75%)`)
+
+    return colors
+}, [])
+
+<Clicker
+    color={colors[index]}
+/>
+```
+
+------
+
+## 7 - useRef Hook - DOM
+
+To access the component itself, we should use `useRef`
+
+``` javascript
+import { useRef, useEffect } from 'react'
+
+const buttonRef = useRef()
+
+// first render
+useEffect(() => {
+    // DOM
+    buttonRef.current.style.backgroundColor = 'cyan'
+    buttonRef.current.style.color = 'red'
+
+    return () =>
+    {
+    }
+}, []) 
+
+<button
+    ref={ buttonRef }
+</button>
+```
+
+------
+
+## 8 - People component example
+
+Basic example of a component with a list of objects and showing them in a list
+
+``` javascript
+import { useState } from 'react'
+
+export default function People()
+{
+    const [ people, setPeople ] =useState([
+        { id: 1, name: 'Ivan'},
+        { id: 2, name: 'Xavier'},
+        { id: 3, name: 'João'},
+        { id: 4, name: 'Ana'},
+        { id: 5, name: 'Maria'},
+    ])
+
+    return <div>
+        <h2>People</h2>
+
+        <ul>
+        { people.map(person => <li key={ person.id }>{ person.name }</li>) }
+        </ul>
+    </div>
+}
+```
