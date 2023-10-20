@@ -7,6 +7,15 @@ export default function Clicker()
     //console.log(useState(0))
 
     useEffect(() => {
+      console.log('first render of the clicker')
+      return () =>
+      {
+        console.log('disposing clicker component')
+        localStorage.removeItem('count')  // Remove the local storage when we hide the component
+      }
+    }, [])  
+
+    useEffect(() => {
         localStorage.setItem('count', count) 
     }, [ count ])   // Call this everytime th count changes
 

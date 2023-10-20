@@ -141,6 +141,19 @@ export default function Clicker()
 }
 ```
 
+When we leave the array empty `[]` in the `useEffect`, we can the hook the component itself
+
+``` javascript
+useEffect(() => {
+    console.log('first render of the clicker')
+    return () =>
+    {
+    console.log('disposing clicker component')
+    localStorage.removeItem('count')
+    }
+}, [])  
+```
+
 ## 3 - Conditional rendering
 
 Rendering components conditionally, in the example we use a button that toggle click component
@@ -168,4 +181,7 @@ export default function App()
 
 ------
 
-## 
+## Props
+
+Multiple `Clickers` using the same local storage variable, when we update the page the last value to be updated will be shared by the other `Clickers`
+

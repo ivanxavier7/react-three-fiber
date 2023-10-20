@@ -14,6 +14,15 @@ export default function App()
     return <>
         <button onClick={toggleClickerClick}>{hasClicker ? 'Hide' : 'Show'} Toggle click </button>
         {/* hasClicker ? <Clicker /> : null*/}
+        
+        
         { hasClicker && <Clicker /> /* if its false, js dont check the second part of the condition*/}
+        { hasClicker && <>
+            <Clicker />
+            <Clicker />
+            <Clicker />
+        </>}
+
+
     </>
 }
