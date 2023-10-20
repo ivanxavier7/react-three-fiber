@@ -3,13 +3,13 @@
 1. Setup
 2. JSX
 
-### Setup
+### 1 - Setup
 
 1. NPX-Node
 2. Scratch
 3. Vite - Recommended
 
-### NPX 
+### 1.1 - NPX 
 
 * Needs `npm` to get dependencies, ideal to modular applications
 
@@ -21,7 +21,7 @@ npm install -g npx # Install npx globally
 npx create-react-app .
 ```
 
-### Scratch
+### 1.2 - Scratch
 
 * NPX adds unecessary files so we can do it from scratch
 
@@ -79,7 +79,7 @@ npm run dev
 10. Choose yes to add default browser configurations
 
 
-### Vite
+### 1.3 - Vite
 
 1. Create Vite project
 
@@ -105,11 +105,7 @@ npm run dev
 
 ------
 
-## Mouse events
-
-``` javascript
-
-```
+## 2 - Event Reacting
 
 `useState`
 
@@ -120,7 +116,7 @@ npm run dev
 * Triggers a function when a variable changes
 
 ``` javascript
-import { useState, useEffect } from 'react'    // useState - data that will change dynamically, UseEffect - will say when the component will be rendered
+import { useState, useEffect } from 'react'
 
 
 export default function Clicker()
@@ -143,6 +139,33 @@ export default function Clicker()
       </>
     )
 }
-
 ```
 
+## 3 - Conditional rendering
+
+Rendering components conditionally, in the example we use a button that toggle click component
+
+``` javascript
+import { useState } from "react"
+import Clicker from "./Clicker"
+
+export default function App()
+{
+    const [ hasClicker, setHasClicker ] = useState(true)
+
+    const toggleClickerClick = () =>
+    {
+        setHasClicker(!hasClicker)
+    }
+
+    return <>
+        <button onClick={toggleClickerClick}>{hasClicker ? 'Hide' : 'Show'} Toggle click </button>
+        {/* hasClicker ? <Clicker /> : null*/}
+        { hasClicker && <Clicker /> }
+    </>
+}
+```
+
+------
+
+## 
