@@ -2,6 +2,13 @@
 
 1. Setup
 2. JSX
+3. Conditional rendering
+4. Properties
+5. Mapping cycle
+6. Cache
+7. DOM
+8. People component
+9. Fetch API
 
 ### 1 - Setup
 
@@ -218,7 +225,7 @@ export default function Clicker({keyName})
 
 -------
 
-## 5 - For cycle
+## 5 - Mapping cycle
 
 We can use the `map()` function to cycle through functions through each element of an array and use its index
 
@@ -253,7 +260,7 @@ tempArray.map((value, index) =>{
 
 ------
 
-## 6 - useMemo
+## 6 - Cache
 
 When we need to use the cache to store some information we must use `useMemo`
 
@@ -276,7 +283,7 @@ const colors = useMemo(() => {
 
 ------
 
-## 7 - useRef Hook - DOM
+## 7 - DOM
 
 To access the component itself, we should use `useRef`
 
@@ -303,7 +310,7 @@ useEffect(() => {
 
 ------
 
-## 8 - People component example
+## 8 - People component
 
 Basic example of a component with a list of objects and showing them in a list
 
@@ -319,6 +326,47 @@ export default function People()
         { id: 4, name: 'Ana'},
         { id: 5, name: 'Maria'},
     ])
+
+    return <div>
+        <h2>People</h2>
+
+        <ul>
+        { people.map(person => <li key={ person.id }>{ person.name }</li>) }
+        </ul>
+    </div>
+}
+```
+
+## 9 - Fetch API
+
+Using the same example as the previous component, we can see an example of a request to an API and the application of its data in the component
+
+[API example](https://jsonplaceholder.typicode.com/)
+
+``` javascript
+import { useState, useEffect } from 'react'
+
+export default function People()
+{
+    const [ people, setPeople ] =useState([
+        { id: 1, name: 'Ivan'},
+        { id: 2, name: 'Xavier'},
+        { id: 3, name: 'João'},
+        { id: 4, name: 'Ana'},
+        { id: 5, name: 'Maria'},
+    ])
+
+    const getPeople = async () =>
+    {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users')
+        const result = await response.json()
+        setPeople(result)
+    }
+
+    useEffect(() => 
+    {
+        getPeople() // When the component is created, fetch all the people
+    }, [])
 
     return <div>
         <h2>People</h2>
