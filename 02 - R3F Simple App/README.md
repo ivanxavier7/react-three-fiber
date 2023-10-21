@@ -46,6 +46,8 @@ import { Canvas } from '@react-three/fiber'
 
 ## 3 - Animate
 
+we must use the delta to synchronize with the frames of each device, for example, a 144hz screen will animate differently if we do not use the delta
+
 ``` javascript
 import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
@@ -68,3 +70,32 @@ export default function Experience ()
     </>
 }
 ```
+
+## 4 - OrbitControls
+
+Add orbital controls to the camera
+
+``` javascript
+import { useThree ,extend, useFrame } from '@react-three/fiber'
+
+export default function Experience ()
+{
+    const {camera, gl } = useThree()
+
+    return <>
+        <orbitControls args={[ camera, gl.domElement]}/>
+        <mesh>
+            <boxGeometry />
+            <meshBasicMaterial color={ 'mediumPurple' }  />
+        </mesh>
+    </>
+}
+```
+
+## 5 - Lights
+
+``` javascript
+<directionalLight position={[0,2,2]} intensity={ 1.5 } color={ 'Aquamarine' }/>
+<ambientLight intensity={ 0.3 } color={'blue'}/>
+```
+
