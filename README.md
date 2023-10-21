@@ -578,6 +578,12 @@ export default function CustomObject()
 
 ## 7 - Canvas
 
+1. Animating camera
+2. Antialias
+3. ToneMapping
+4. Encoding
+5. Pixel Ratio
+
 The canvas configures the following for us:
 * `Scene`
 * `Camera`
