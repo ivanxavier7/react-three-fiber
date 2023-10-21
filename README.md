@@ -430,13 +430,13 @@ export default function People()
 6. Custom Geometry
 7. Canvas
 
-## 1 - Setup
+## 2.1 - Setup
 
 ``` bash
 npm install three@0.153 @react-three/fiber@8.13 --save
 ```
 
-## 2 - Implementation
+## 2.2 - Implementation
 
 ```javascript
 import { Canvas } from '@react-three/fiber'
@@ -467,7 +467,7 @@ import { Canvas } from '@react-three/fiber'
 </Canvas>
 ```
 
-## 3 - Animate
+## 2.3 - Animate
 
 we must use the delta to synchronize with the frames of each device, for example, a 144hz screen will animate differently if we do not use the delta
 
@@ -494,7 +494,7 @@ export default function Experience ()
 }
 ```
 
-## 4 - OrbitControls
+## 2.4 - OrbitControls
 
 Add orbital controls to the camera
 
@@ -515,14 +515,14 @@ export default function Experience ()
 }
 ```
 
-## 5 - Lights
+## 2.5 - Lights
 
 ``` javascript
 <directionalLight position={[0,2,2]} intensity={ 1.5 } color={ 'Aquamarine' }/>
 <ambientLight intensity={ 0.3 } color={'blue'}/>
 ```
 
-## 6 - Custom Geometry
+## 2.6 - Custom Geometry
 
 1. Create `Float32Array` for the coordinates
 2. Fill the array with values
@@ -576,7 +576,7 @@ export default function CustomObject()
 }
 ```
 
-## 7 - Canvas
+## 2.7 - Canvas
 
 1. Animating camera
 2. Antialias
@@ -608,7 +608,7 @@ But these parameters may have to be modified by us
 </Canvas>
 ```
 
-### 7.1 - Animating camera
+### 2.7.1 - Animating camera
 
 Make the camera move in circles around the scene, while looking at its center
 
@@ -622,7 +622,7 @@ useFrame((state, delta) =>
 })
 ```
 
-### 7.2 - Antialias
+### 2.7.2 - Antialias
 
 Is enabled by default, we can remove it with:
 ``` javascript
@@ -635,7 +635,7 @@ Is enabled by default, we can remove it with:
 </Canvas>
 ```
 
-### 7.3 - ToneMapping
+### 2.7.3 - ToneMapping
 
 The default is the ACESFilmicToneMapping
 
@@ -664,7 +664,7 @@ import * as THREE from 'three'
 </Canvas>
 ```
 
-### 7.4 - Encoding
+### 2.7.4 - Encoding
 
 By default is set to sRGBEncoding, we can change with `gl` property
 
@@ -680,7 +680,7 @@ import * as THREE from 'three'
 </Canvas>
 ```
 
-### 7.5 - Pixel Ratio
+### 2.7.5 - Pixel Ratio
 
 We can force a specific pixel ratio with the attribute `dpr`, if its below 1, gets 1, if its above 2 will become 2.
 The default is 1 to 2, so we can remove this.
