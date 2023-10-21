@@ -99,3 +99,98 @@ export default function Experience ()
 <ambientLight intensity={ 0.3 } color={'blue'}/>
 ```
 
+## 6 - Custom Geometry
+
+1. Create `Float32Array` for the coordinates
+2. Fill the array with values
+3. Save it in the cache
+4. Create BufferAttribute with this array
+5. Add the BufferAttribute to the BuggerGeometry
+6. Set the normals in the object
+
+``` javascript
+import * as THREE from 'three'
+import { useEffect ,useRef, useMemo } from 'react'
+
+export default function CustomObject()
+{
+    const geometryRef = useRef()
+    
+    const verticesCount = 10 * 3
+
+    const positions = useMemo(() =>
+    {
+        const positions = new Float32Array(verticesCount * 3)
+
+        for(let i = 0; i < verticesCount * 3; i++)
+        {
+            positions[i] = (Math.random() - 0.5) * 3
+        }
+
+        return positions
+    }, [])
+
+    useEffect(() =>
+    {
+        //console.log(geometryRef.current)
+        geometryRef.current.computeVertexNormals()
+    }, [])
+
+    return <mesh>
+        <bufferGeometry
+            ref={ geometryRef }
+        >
+            <bufferAttribute 
+                attach="attributes-position"
+                count={ verticesCount }
+                itemSize={ 3 }
+                array={ positions}
+                
+            />
+        </bufferGeometry>
+        <meshStandardMaterial color="red" side={ THREE.DoubleSide }/>
+    </mesh>
+}
+```
+
+## 7 - Canvas
+
+The canvas configures the following for us:
+* `Scene`
+* `Camera`
+* `Renderer`
+* `Antialias`
+* `Encoding`
+* `etc`
+
+But these parameters may have to be modified by us
+
+``` javascript
+<Canvas 
+    camera={ {  
+    position: [1, 2, 3],
+    fov: 45,
+    near: 0.1,
+    far: 200
+    }}
+>
+    <Experience />
+    <CustomObject />
+</Canvas>
+```
+
+## 8 - Animating camera
+
+Make the camera move in circles around the scene, while looking at its center
+
+``` javascript
+useFrame((state, delta) =>
+{
+    const angle = state.clock.elapsedTime
+    state.camera.position.x = Math.sin(angle)
+    state.camera.position.z = Math.cos(angle)
+    state.camera.lookAt(0, 0, 0)
+})
+```
+
+## 9 - Antialias

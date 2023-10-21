@@ -15,10 +15,15 @@ export default function Experience ()
     {
         cubeRef.current.rotation.y += delta
         //groupRef.current.rotation.y += delta
+
+        //const angle = state.clock.elapsedTime
+        //state.camera.position.x = Math.sin(angle)
+        //state.camera.position.z = Math.cos(angle)
+        //state.camera.lookAt(0, 0, 0)
     })
 
     return <>
-        <orbitControls args={[ camera, gl.domElement]}/>
+        <orbitControls args={[ camera, gl.domElement ]}/>
 
         <directionalLight position={[0,2,2]} intensity={ 1.5 }/>
         <ambientLight intensity={ 0.3 } color={'blue'}/>
