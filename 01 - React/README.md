@@ -113,6 +113,10 @@ npm install
 npm run dev
 ```
 
+7. Install react scripts (optional)
+``` bash
+npm install react-scripts --save
+```
 ------
 
 ## 2 - Event Reacting

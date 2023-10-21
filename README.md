@@ -7,7 +7,7 @@ React - Data binding- application react to the data (event triggering)
 * [Three.js Docs](https://threejs.org/docs/)
 
 1. React
-2. React Three Fiber
+2. R3F Simple Application
 3. Debug
 4. Environment and Staging
 5. Load Models
@@ -137,6 +137,11 @@ npm install
 6. Run
 ``` bash
 npm run dev
+```
+
+7. Install react scripts (optional)
+``` bash
+npm install react-scripts --save
 ```
 
 ------
@@ -406,3 +411,8 @@ export default function People()
     </div>
 }
 ```
+
+------
+
+# 2 - R3F Simple Application
+
