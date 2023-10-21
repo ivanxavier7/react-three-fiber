@@ -4,6 +4,8 @@
 
 * [React Three Fiber Tutorials](https://sbcode.net/react-three-fiber/)
 
+* [Performance tips](https://docs.pmnd.rs/react-three-fiber/advanced/scaling-performance#instancing)
+
 1. Setup
 2. 
 
@@ -179,7 +181,7 @@ But these parameters may have to be modified by us
 </Canvas>
 ```
 
-## 8 - Animating camera
+### 7.1 - Animating camera
 
 Make the camera move in circles around the scene, while looking at its center
 
@@ -193,4 +195,73 @@ useFrame((state, delta) =>
 })
 ```
 
-## 9 - Antialias
+### 7.2 - Antialias
+
+Is enabled by default, we can remove it with:
+``` javascript
+<Canvas
+    gl={ {
+    antialias: false
+    }} 
+>
+    <CustomObject />
+</Canvas>
+```
+
+### 7.3 - ToneMapping
+
+The default is the ACESFilmicToneMapping
+
+we can remove it adding `flat` to the canvas.
+
+``` javascript
+<Canvas
+    flat
+>
+    <CustomObject />
+</Canvas>
+```
+
+Or choose your ToneMapping
+
+``` javascript
+import * as THREE from 'three'
+
+<Canvas
+    gl={ {
+    toneMapping: THREE.CineonToneMapping
+    }} 
+
+>
+    <CustomObject />
+</Canvas>
+```
+
+### 7.4 - Encoding
+
+By default is set to sRGBEncoding, we can change with `gl` property
+
+``` javascript
+import * as THREE from 'three'
+
+<Canvas
+    gl={ {
+    outputEncoding: THREE.LinearSRGBColorSpace
+    }} 
+>
+    <CustomObject />
+</Canvas>
+```
+
+### 7.5 - Pixel Ratio
+
+We can force a specific pixel ratio with the attribute `dpr`, if its below 1, gets 1, if its above 2 will become 2.
+The default is 1 to 2, so we can remove this.
+
+``` javascript
+<Canvas
+    dpr={ 1, 2 }
+>
+    <CustomObject />
+</Canvas>
+```
