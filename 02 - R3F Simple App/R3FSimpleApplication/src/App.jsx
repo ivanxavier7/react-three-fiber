@@ -1,11 +1,12 @@
-import './App.css'
+import { Canvas } from '@react-three/fiber'
 
-function App() {
+import './App.css'
+import Experience from './Experience'
+
+export default function App() {
   return (
-    <>
-      Teste
-    </>
+    <Canvas>
+        <Experience />
+    </Canvas>
   )
 }
-
-export default App
