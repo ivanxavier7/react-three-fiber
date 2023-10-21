@@ -8,16 +8,17 @@ React - Data binding- application react to the data (event triggering)
 
 1. React
 2. R3F Simple Application
-3. Debug
-4. Environment and Staging
-5. Load Models
-6. 3D Text
-7. Portal Scene
-8. Mouse Events
-9. Post-processing
-10. Computer Scene
-11. Physics
-12. Simple Game
+3. Drei
+4. Debug
+5. Environment and Staging
+6. Load Models
+7. 3D Text
+8. Portal Scene
+9. Mouse Events
+10. Post-processing
+11. Computer Scene
+12. Physics
+13. Simple Game
 
 Note: change .js files to .jsx
 
@@ -692,3 +693,10 @@ The default is 1 to 2, so we can remove this.
     <CustomObject />
 </Canvas>
 ```
+
+-------
+
+## 3 - Drei
+
+
+------
