@@ -1,7 +1,7 @@
 import { useThree, extend } from '@react-three/fiber'
 import { useRef } from 'react'
 
-import { Text, Html, PivotControls, TransformControls, OrbitControls } from '@react-three/drei'
+import { Float, Text, Html, PivotControls, TransformControls, OrbitControls } from '@react-three/drei'
 
 export default function Experience()
 {
@@ -46,17 +46,24 @@ export default function Experience()
             <meshStandardMaterial color="greenyellow" />
         </mesh>
 
-        <Text
-            font="./bangers-v20-latin-regular.woff"
-            fontSize= { 0.5 }
-            color="DarkCyan"
-            position={ [-1, 2, 1] }
-            scale={ 2 }
-            maxWidth={ 1.5 }
-            textAlign='center'
+        <Float
+            speed={ 5 }
+            floatIntensity={ 3 }
+            rotationIntensity={ 2 }
         >
-            Ivan Xavier
-            <meshNormalMaterial />
-        </Text>
+            <Text
+                font="./bangers-v20-latin-regular.woff"
+                fontSize= { 0.5 }
+                color="DarkCyan"
+                position={ [-1, 2, 1] }
+                scale={ 2 }
+                maxWidth={ 1.5 }
+                textAlign='center'
+            >
+                Ivan Xavier
+                <meshNormalMaterial />
+            </Text>
+        </Float>
+
     </>
 }

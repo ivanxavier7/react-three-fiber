@@ -171,3 +171,28 @@ import { Text } from '@react-three/drei'
 ```
 
 ## 6 - Float animation
+
+``` javascript
+import { Float, Text } from '@react-three/drei'
+
+<Float
+    speed={ 5 }
+    floatIntensity={ 3 }
+    rotationIntensity={ 2 }
+>
+    <Text
+        font="./bangers-v20-latin-regular.woff"
+        fontSize= { 0.5 }
+        color="DarkCyan"
+        position={ [-1, 2, 1] }
+        scale={ 2 }
+        maxWidth={ 1.5 }
+        textAlign='center'
+    >
+        Ivan Xavier
+        <meshNormalMaterial />
+    </Text>
+</Float>
+```
+
+
