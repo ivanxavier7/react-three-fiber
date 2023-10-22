@@ -1,10 +1,8 @@
 # Drei
 
-[Drei Documentation](https://github.com/pmndrs/drei)
+* [Drei Documentation](https://github.com/pmndrs/drei)
 
-Helpers for react, we can use the component `<theHelper>` or  the hook `useHelper`
-
-* []()
+Examples of some helpers using `Drei`
 
 1. Setup
 2. Camera Controls
@@ -16,8 +14,6 @@ Helpers for react, we can use the component `<theHelper>` or  the hook `useHelpe
 8. Complex calculations
 
 
-
-
 ## 1 - Setup
 
 
@@ -25,14 +21,71 @@ Helpers for react, we can use the component `<theHelper>` or  the hook `useHelpe
 npm install @react-three/drei@9.77
 ```
 
+## 2 - Camera Controls
+
+Orbit Controls
+
+``` javascript
+import { OrbitControls } from '@react-three/drei'
+
+export default function Experience()
+{
+    return <>
+        <OrbitControls />
+        {/* ... */}
+    </>
+}
+```
+
+## 3 - Geometries
+
+1. Transform Controls
+2. Pivot Controls
+
+### 3.1 - Transform Controls
+
+Change the `Position`, `Rotation` and `Scale` of the object
+
+``` javascript
+import { TransformControls, OrbitControls } from '@react-three/drei'
+
+export default function Experience()
+{
+    return <>
+        <OrbitControls makeDefault/>
+        <TransformControls position={ [ 1, 2, 3 ] }> 
+            <directionalLight position={ [ 1, 2, 3 ] } intensity={ 1.5 } />
+        </TransformControls>
+        {/* ... */}
+    </>
+}
+```
+
+Or with `hooks`
+
+``` javascript
+import { TransformControls, OrbitControls } from '@react-three/drei'
+import { useRef } from 'react'
+
+export default function Experience()
+{
+    return <>
+        <OrbitControls makeDefault/>
+        <directionalLight ref={ cube} position={ [ 1, 2, 3 ] } intensity={ 1.5 } />
+        <TransformControls object={ cube } mode="rotate"/>
+        {/* <TransformControls object={ cube } mode="rotate"/> */}
+        {/* <TransformControls object={ cube } mode="scale"/> */}
+        {/* ... */}
+    </>
+}
+```
+
+### 3.2 - Pivot Controls
+
+
 ``` javascript
 
 ```
-
-
-## 2 - Camera Controls
-
-1. Orbit Controls
 
 ``` javascript
 

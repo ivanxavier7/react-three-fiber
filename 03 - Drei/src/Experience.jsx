@@ -1,12 +1,21 @@
 import { useThree, extend } from '@react-three/fiber'
+import { useRef } from 'react'
+
+import { TransformControls, OrbitControls } from '@react-three/drei'
 
 export default function Experience()
 {
+    const cube = useRef()
+
     return <>
-        <directionalLight position={ [ 1, 2, 3 ] } intensity={ 1.5 } />
+        <OrbitControls makeDefault/>
+
+        <directionalLight  position={ [ 1, 2, 3 ] } intensity={ 1.5 } />
+        {/* <TransformControls object={ cube } mode="scale"/> */}
+
         <ambientLight intensity={ 0.5 } />
 
-        <mesh position-x={ - 2 }>
+        <mesh ref={ cube} position-x={ - 2 }>
             <sphereGeometry />
             <meshStandardMaterial color="orange" />
         </mesh>
