@@ -7,7 +7,6 @@ Examples of some helpers using `Drei`
 1. Setup
 2. Camera Controls
 3. Geometries
-4. Post-processing
 5. HTML
 6. Loaders
 7. Environment
@@ -82,10 +81,26 @@ export default function Experience()
 
 ### 3.2 - Pivot Controls
 
+Can rotate, move in Axis or by faces on a relative point of referent.
 
 ``` javascript
+import { PivotControls, OrbitControls } from '@react-three/drei'
 
+<PivotControls
+    anchor={ [0, 0, 0] }
+    depthTest={ false}
+    lineWidth={ 4 }
+    axisColors={ ['#8978fb','#16afb4', '#7ba371'] }
+    scale={ 2 }
+>
+    <mesh position-x={ 2 } scale={ 1.5 } >
+        <boxGeometry />
+        <meshStandardMaterial color="mediumpurple" />
+    </mesh>
+</PivotControls>
 ```
+
+## 4 - HTML
 
 ``` javascript
 
