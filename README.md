@@ -694,6 +694,7 @@ The default is 1 to 2, so we can remove this.
 ## 3 - Drei
 
 * [Drei Documentation](https://github.com/pmndrs/drei)
+* [Drei Examples](https://drei.pmnd.rs/?path=/docs/staging-environment--docs)
 
 Examples of some helpers using `Drei`
 
