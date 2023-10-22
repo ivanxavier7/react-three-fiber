@@ -8,8 +8,8 @@ Examples of some helpers using `Drei`
 2. Camera Controls
 3. Geometries
 4. HTML
-5. Text
-6. Environment
+5. 3D Text
+6. Float animation
 7. Complex calculations
 
 
@@ -136,4 +136,38 @@ import { Html } from '@react-three/drei'
 }
 ```
 
-## 5 - Text
+## 5 - 3D Text
+
+`SDF Fonts` Signed Distance Field Fonts - Shader functions for the text
+
+Patters
+* [2D SDF Functions](https://iquilezles.org/articles/distfunctions2d/)
+* [#D SDF Functions](https://iquilezles.org/articles/distfunctions/)
+
+Fonts
+* [Google FOnts](https://fonts.google.com/)
+
+Formats supporter:
+
+* `woff` - lighter
+* `ttf`
+* `otf`
+
+``` javascript
+import { Text } from '@react-three/drei'
+
+<Text
+    font="./bangers-v20-latin-regular.woff"
+    fontSize= { 0.5 }
+    color="DarkCyan"
+    position={ [-1, 2, 1] }
+    scale={ 2 }
+    maxWidth={ 1.5 }
+    textAlign='center'
+>
+    Ivan Xavier
+    <meshNormalMaterial />
+</Text>
+```
+
+## 6 - Float animation
