@@ -1,11 +1,12 @@
 import { useThree, extend } from '@react-three/fiber'
 import { useRef } from 'react'
 
-import { PivotControls, TransformControls, OrbitControls } from '@react-three/drei'
+import { Html, PivotControls, TransformControls, OrbitControls } from '@react-three/drei'
 
 export default function Experience()
 {
     const cube = useRef()
+    const sphere = useRef()
 
     return <>
         <OrbitControls makeDefault/>
@@ -15,7 +16,7 @@ export default function Experience()
 
         <ambientLight intensity={ 0.5 } />
 
-        <mesh ref={ cube} position-x={ - 2 }>
+        <mesh ref={ sphere } position-x={ - 2 }>
                 <sphereGeometry />
                 <meshStandardMaterial color="orange" />
         </mesh>
@@ -26,9 +27,17 @@ export default function Experience()
             axisColors={ ['#8978fb','#16afb4', '#7ba371'] }
             scale={ 2 }
         >
-            <mesh position-x={ 2 } scale={ 1.5 } >
+            <mesh ref={ cube } position-x={ 2 } scale={ 1.5 } >
                 <boxGeometry />
                 <meshStandardMaterial color="mediumpurple" />
+                <Html
+                    position={ [-1, 1, 0 ] }
+                    wrapperClass='label'
+                    distanceFactor={ 8 }
+                    occlude={ [ sphere, cube ] }
+                >
+                    That's a cube 👌❤️❤️❤️
+                </Html>
             </mesh>
         </PivotControls>
 

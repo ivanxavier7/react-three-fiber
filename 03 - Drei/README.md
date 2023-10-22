@@ -7,10 +7,10 @@ Examples of some helpers using `Drei`
 1. Setup
 2. Camera Controls
 3. Geometries
-5. HTML
-6. Loaders
-7. Environment
-8. Complex calculations
+4. HTML
+5. Text
+6. Environment
+7. Complex calculations
 
 
 ## 1 - Setup
@@ -102,6 +102,38 @@ import { PivotControls, OrbitControls } from '@react-three/drei'
 
 ## 4 - HTML
 
-``` javascript
+DOM element that stick to the object
 
+``` javascript
+import { Html } from '@react-three/drei'
+
+<mesh ref={ cube } position-x={ 2 } scale={ 1.5 } >
+    <boxGeometry />
+    <meshStandardMaterial color="mediumpurple" />
+    <Html
+        position={ [-1, 1, 0 ] }
+        wrapperClass='label'
+        distanceFactor={ 8 }
+        occlude={ [ sphere, cube ] }
+    >
+        That's a cube 👌❤️❤️❤️
+    </Html>
+</mesh>
 ```
+
+``` css
+.label > div
+{
+    font-family: Helvetiva, Arial;
+    position: absolute;
+    background: #00000088;
+    color: white;
+    padding: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-radius: 30px;
+    user-select: none;
+}
+```
+
+## 5 - Text
