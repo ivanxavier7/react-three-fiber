@@ -195,4 +195,15 @@ import { Float, Text } from '@react-three/drei'
 </Float>
 ```
 
+## 7 - Materials
 
+Using a `MeshReflectorMaterial` on the floor to reflect the objects
+
+``` javascript
+import { MeshReflectorMaterial } from '@react-three/drei'
+
+<mesh position-y={ - 1 } rotation-x={ - Math.PI * 0.5 } scale={ 10 }>
+    <planeGeometry />
+    <MeshReflectorMaterial color="darkgreen" />
+</mesh>
+```
