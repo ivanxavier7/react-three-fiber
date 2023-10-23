@@ -92,8 +92,158 @@ useHelper(directionalLight, THREE.DirectionalLightHelper, 1)
 6. `<spotLightLight />`
 
 
-## 3 Shadows
+## 3 - Shadows
+
+Realistic shadows have slightly bluer pigmentation, change the color accordingly
+
+1. Setup
+2. Baking
+
+### 3.1 - Setup
+
+`index.jsx`
+``` javascript
+    <Canvas
+        shadows
+    >
+    </Canvas>
+```
+
+`component.jsx`
+``` javascript
+<directionalLight
+    castShadow
+/>
+
+<mesh
+    castShadow
+>
+    <sphereGeometry />
+    <meshStandardMaterial />
+</mesh>
+
+<mesh
+    castShadow
+>
+    <boxGeometry />
+    <meshStandardMaterial />
+</mesh>
+
+<mesh
+    receiveShadow
+>
+    <planeGeometry />
+    <meshStandardMaterial />
+</mesh>
+```
+
+### 3.2 - Baking
+
+For static shadows, reduce resources needed to cast a shadow.
 
 ``` javascript
+import { BakeShadows } from '@react-three/drei'
 
+<BakeShadows />
+```
+
+### 3.3 - Configure
+
+1. Sharp shadows
+2. Soft shadows
+3. Accumulative shadows
+4. Contact shadows
+
+#### 3.3.1 - Sharp shadows
+
+``` javascript
+<directionalLight
+    ref={ directionalLight }
+    position={ [ 1, 2, 3 ] }
+    intensity={ 1.5 }
+    castShadow
+    shadow-mapSize={ [ 1024, 1024 ] }
+    shadow-camera-near={ 1 }
+    shadow-camera-far={ 10 }
+    shadow-camera-top={ 5 }
+    shadow-camera-right={ 5 }
+    shadow-camera-bottom={ -5 }
+    shadow-camera-left={ -5 }
+/>
+```
+
+
+#### 3.3.2 - Soft shadows
+
+Softens the shadow depending on the distance from the object.
+
+``` javascript
+import { SoftShadows } from '@react-three/drei'
+
+<SoftShadows
+    size={ 25 }
+    samples={ 10 }
+    focus={ 0 }
+/>
+```
+
+#### 3.3.3 - Accumulative shadows
+
+Accumulates multiple shadows, moves the light randomly before each render and compose them together, can be used only with a `Plane`, ideal to make a floor.
+
+Final accumulation will create delay in shadow calculation, not ideal for animating
+
+``` javascript
+import { AccumulativeShadows, RandomizedLight } from '@react-three/drei'
+
+<AccumulativeShadows
+    position={ [0, -0.99, 0 ] }
+    scale={ 10 }
+    color='#326447'
+    opacity={ 0.8 }
+    frames={ Infinity }
+    temporal
+    blend={ 100 }
+>
+    <RandomizedLight
+        amount={ 8 }
+        radius={ 1 }
+        ambient={ 0.5 }
+        bias={ 0.001 }
+        position={ [1, 2, 3] }
+        castShadow
+    />
+</AccumulativeShadows>
+```
+
+#### 3.3.4 - Contact shadows
+
+Don't use default shadows, we can deactivate them, don´t need a light and only works on a plane
+
+Render from the floor, and use the `frames={ 1 } to bake the shadow`, the light comes always from the front of the plane and its good for performance.
+
+`index.jsx`
+``` javascript
+<Canvas
+    shadows={ false }
+>
+</Canvas>
+```
+
+`component.jsx`
+``` javascript
+import { useControls } from 'leva'
+import { ContactShadows } from '@react-three/drei'
+
+<ContactShadows
+    position={ [ 0, -0.99, 0] }
+    scale={ 10 }
+    resolution={ 512 }
+    far={ 5 }
+    near={ 0.01 }
+    color={ color }
+    opacity={ opacity }
+    blur={ blur }
+    frames={ 1 }
+/>
 ```
