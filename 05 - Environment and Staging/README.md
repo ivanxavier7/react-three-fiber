@@ -247,3 +247,36 @@ import { ContactShadows } from '@react-three/drei'
     frames={ 1 }
 />
 ```
+
+## 4 - Sky
+
+Creates a sky that can be customized, to improve the sun, we associate a directional light to update the shadows on objects in relation to the position of the sun.
+
+``` javascript
+import { Sky } from '@react-three/drei'
+import { useControls } from 'leva'
+
+
+const { sunPosition } = useControls('sky',
+{
+    sunPosition: { value: [ 1, 2, 3] }
+})
+
+<directionalLight
+    ref={ directionalLight }
+    position={ sunPosition }
+    intensity={ 1.5 }
+    castShadow
+    shadow-mapSize={ [ 1024, 1024 ] }
+    shadow-camera-near={ 1 }
+    shadow-camera-far={ 10 }
+    shadow-camera-top={ 5 }
+    shadow-camera-right={ 5 }
+    shadow-camera-bottom={ -5 }
+    shadow-camera-left={ -5 }
+/>
+
+<Sky
+    position={ sunPosition }
+/>
+```
