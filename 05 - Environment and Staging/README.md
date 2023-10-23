@@ -187,6 +187,7 @@ import { SoftShadows } from '@react-three/drei'
 />
 ```
 
+
 #### 3.3.3 - Accumulative shadows
 
 Accumulates multiple shadows, moves the light randomly before each render and compose them together, can be used only with a `Plane`, ideal to make a floor.
@@ -215,6 +216,7 @@ import { AccumulativeShadows, RandomizedLight } from '@react-three/drei'
     />
 </AccumulativeShadows>
 ```
+
 
 #### 3.3.4 - Contact shadows
 
@@ -248,6 +250,7 @@ import { ContactShadows } from '@react-three/drei'
 />
 ```
 
+
 ## 4 - Sky
 
 Creates a sky that can be customized, to improve the sun, we associate a directional light to update the shadows on objects in relation to the position of the sun.
@@ -279,4 +282,158 @@ const { sunPosition } = useControls('sky',
 <Sky
     position={ sunPosition }
 />
+```
+
+
+## 5 - Environments map
+
+1. Cube Map
+2. HDR Map
+3. Preset
+
+
+### 5.1 - Cube Map
+
+Load the textures and apply them to all materials
+
+``` javascript
+import { Environment } from '@react-three/drei'
+import { useControls } from 'leva'
+
+const { envMapIntensity } = useControls('environment map',
+{
+    envMapIntensity: { value: 3.5, min: 0, max: 12 }
+})
+
+<Environment
+    background
+    files={ [
+        './environmentMaps/0/px.jpg',
+        './environmentMaps/0/nx.jpg',
+        './environmentMaps/0/py.jpg',
+        './environmentMaps/0/ny.jpg',
+        './environmentMaps/0/pz.jpg',
+        './environmentMaps/0/nz.jpg',
+    ] }
+/>
+
+<mesh
+    castShadow
+>
+    <boxGeometry />
+    <meshStandardMaterial
+        envMapIntensity={ envMapIntensity }
+    />
+</mesh>
+
+<mesh>
+    <planeGeometry />
+    <meshStandardMaterial
+        envMapIntensity={ envMapIntensity }
+    />
+</mesh>
+```
+
+
+### 5.2 - HDR Map
+
+Just load the HDR file
+
+``` javascript
+<Environment
+    background
+    files={ './environmentMaps/the_sky_is_on_fire_2k.hdr' }
+/>
+```
+
+### 5.3 - Preset
+
+Presets from Poly Haven
+
+* [Presets list](https://github.com/pmndrs/drei/blob/master/src/helpers/environment-assets.ts)
+
+``` javascript
+<Environment
+    background
+    preset="sunset"
+/>
+```
+
+### 5.3 - Custom
+
+We can add geometries within the environment map
+
+``` javascript
+<Environment
+    background
+    preset='city'
+>
+    <mesh
+        position={ [0, 4, -5] }
+        scale={ 10 }
+    >
+        <planeGeometry />
+        <meshBasicMaterial color={ "#248181"} />
+    </mesh>
+</Environment>
+```
+
+### 5.3 Custom Lights
+
+``` javascript
+import { Lightformer, Environment } from '@react-three/drei'
+
+<Environment
+    background
+>
+    <Lightformer
+        position={ [0, 4, -5] }
+        scale={ 10 }
+        color={ "#117568" }
+        intensity={ 10 }
+        form="ring"
+    />
+</Environment>
+```
+
+### 5.4 Configure
+
+``` javascript
+
+```
+
+## 6 - Stage
+
+Default stage
+
+``` javascript
+import { Stage } from '@react-three/drei'
+
+<Stage>
+    <mesh
+        castShadow
+        position-x={ - 2 }
+        position-y={ 1 }
+    >
+        <sphereGeometry />
+        <meshStandardMaterial
+            color="#156356"
+            envMapIntensity={ envMapIntensity }
+        />
+    </mesh>
+
+    <mesh
+        castShadow
+        ref={ cube }
+        position-x={ 2 }
+        position-y={ 1 }
+        scale={ 1.5 }
+    >
+        <boxGeometry />
+        <meshStandardMaterial
+            color="#681e5e"
+            envMapIntensity={ envMapIntensity }
+        />
+    </mesh>
+</Stage>
 ```
