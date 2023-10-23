@@ -406,10 +406,17 @@ import { Lightformer, Environment } from '@react-three/drei'
 
 Default stage
 
+* [Stage](https://github.com/pmndrs/drei#staging)
+
 ``` javascript
 import { Stage } from '@react-three/drei'
 
-<Stage>
+<Stage
+    background
+    opacity={ 0.2 }
+    blur={ 3 }
+    environment="sunset"
+>
     <mesh
         castShadow
         position-x={ - 2 }

@@ -166,7 +166,14 @@ export default function Experience()
             />
         </mesh>
         */}
-        <Stage>
+        <Stage
+            opacity={ 0.2 }
+            blur={ 3 }
+            environment="sunset"
+            preset="portrait"
+            intensity={ 2 }
+        >
+            {/* Preset - [ "rembrandt", ""portrait", "upfront", "soft" ] */}
             <mesh
                 castShadow
                 position-x={ - 2 }
