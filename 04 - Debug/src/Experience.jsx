@@ -1,4 +1,4 @@
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, MeshReflectorMaterial } from '@react-three/drei'
 
 import { button, useControls } from 'leva'
 
@@ -64,7 +64,11 @@ const { position, color, visible, perfVisible } = useControls('Folder Name',
             position={ [position.x, position.y, 0] }
         >
             <sphereGeometry />
-            <meshStandardMaterial color={ color } />
+            <MeshReflectorMaterial
+                resolution={ 1024 }
+                mirror={ 0.9 }
+                color={ color }
+            />
         </mesh>
 
         <mesh position-x={ 2 } scale={ 1.5 }>
@@ -74,7 +78,11 @@ const { position, color, visible, perfVisible } = useControls('Folder Name',
 
         <mesh position-y={ - 1 } rotation-x={ - Math.PI * 0.5 } scale={ 10 }>
             <planeGeometry />
-            <meshStandardMaterial color="#3e5e24" />
+            <MeshReflectorMaterial
+                resolution={ 1024 }
+                mirror={ 0.9 }
+                color="#3e5e24"
+            />
         </mesh>
 
     </>
