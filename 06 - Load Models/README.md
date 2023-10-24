@@ -194,14 +194,94 @@ export default function Model()
 }
 ```
 
+
 ## 5 - GLTF Component
 
-``` javascript
+1. Convert
+2. Import and Shadow Acne
 
+Converts a GLTF template to a React THREE Fiber component. We can tweak the menu before copying the result.
+
+[Converter script](https://github.com/pmndrs/gltfjsx)
+[Online converter](https://gltf.pmnd.rs/)
+
+Create a component with the name of the model and copy the result into the file.
+ * Add the dot `./hamburger-draco.glb`
+ * Add export `export default function`
+ * Change function name `function Hamburger(props)`
+ * Import
+ * Change diferent parts of the model if needed
+
+### 5.1 - Convert
+`Hamburger.jsx`
+``` javascript
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+
+
+export default function Model(props)
+{
+    const { nodes, materials } = useGLTF("./hamburger-draco.glb");
+    return (
+        <group {...props} dispose={null}>
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.bottomBun.geometry}
+                material={materials.BunMaterial}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.meat.geometry}
+                material={materials.SteakMaterial}
+                position={[0, 2.817, 0]}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.cheese.geometry}
+                material={materials.CheeseMaterial}
+                position={[0, 3.04, 0]}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.topBun.geometry}
+                material={materials.BunMaterial}
+                position={[0, 1.771, 0]}
+            />
+        </group>
+    );
+}
+
+useGLTF.preload("/hamburger-draco.glb");
+```
+
+### 5.2 - Import and Shadow Acne
+
+Fix on the bias or shadowBias of the directional light shadow
+
+`Experience.jsx`
+``` javascript
+import Hamburger from './Hamburger'
+
+<directionalLight
+    shadow-normalBias={ 0.04 }
+    castShadow
+    position={ [ 1, 2, 3 ] }
+    intensity={ 1.5 }
+/>
+
+<Hamburger
+    scale={ 0.35 }
+/>
 ```
 
 ## 6 - Animations
 
+
+`Fox.jsx`
 ``` javascript
 
 ```

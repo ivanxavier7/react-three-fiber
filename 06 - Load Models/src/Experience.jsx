@@ -3,6 +3,8 @@ import { Perf } from 'r3f-perf'
 import { Suspense } from 'react'
 import Model from './Model'
 import Placeholder from './Placeholder'
+import Hamburger from './Hamburger'
+
 
 export default function Experience()
 {
@@ -11,7 +13,12 @@ export default function Experience()
 
         <OrbitControls makeDefault />
 
-        <directionalLight castShadow position={ [ 1, 2, 3 ] } intensity={ 1.5 } />
+        <directionalLight
+            shadow-normalBias={ 0.04 }
+            castShadow
+            position={ [ 1, 2, 3 ] }
+            intensity={ 1.5 }
+        />
         <ambientLight intensity={ 0.5 } />
 
         <Suspense
@@ -20,7 +27,9 @@ export default function Experience()
                 scale={ [ 2, 3, 2 ] }
             /> }
         >
-            <Model />
+            <Hamburger
+                scale={ 0.35 }
+            />
         </Suspense>
         
 
