@@ -4,7 +4,7 @@ import { Suspense } from 'react'
 import Model from './Model'
 import Placeholder from './Placeholder'
 import Hamburger from './Hamburger'
-
+import Fox from './Fox'
 
 export default function Experience()
 {
@@ -31,11 +31,12 @@ export default function Experience()
                 scale={ 0.35 }
             />
         </Suspense>
-        
 
         <mesh receiveShadow position-y={ - 1 } rotation-x={ - Math.PI * 0.5 } scale={ 10 }>
             <planeGeometry />
             <meshStandardMaterial color="#115014" />
         </mesh>
+
+        <Fox />
     </>
 }
