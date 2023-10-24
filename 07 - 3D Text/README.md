@@ -160,7 +160,10 @@ export default function Experience()
 ## 3 -  Animate
 
 1. Group
-2. 
+2. Array
+
+
+### 3.1 - Group
 
 `useRef` to associate to a `group` to animate(`useFrame`) groups of objects.
 
@@ -209,3 +212,35 @@ export default function Experience()
 }
 ```
 
+### 3.2 - Array
+
+``` javascript
+import { useRef } from 'react'
+import { useFrame } from '@react-three/fiber'
+
+export default function Experience()
+{
+    const donuts = useRef([])
+
+    useFrame((state, delta) =>
+    {
+        for(const donut of donuts.current)
+        {
+            donut.rotation.y += delta * 0.2
+        }
+    })
+
+    return <>
+        { [...Array(100)].map((value, index) =>
+                <mesh
+                    ref={ (element) => 
+                    {
+                        donuts.current[index] = element
+                    }}
+                >
+                </mesh>
+            )
+        }
+    </>
+}
+```

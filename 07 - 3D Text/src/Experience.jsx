@@ -29,13 +29,10 @@ export default function Experience()
 
     useFrame((state, delta) =>
     {
-        {/*
-        for(const donut of donutsGroup.current.children)
+        for(const donut of donuts.current)
         {
             donut.rotation.y += delta * 0.2
-
         }
-        */}
     })
 
     return <>
@@ -74,6 +71,10 @@ export default function Experience()
         */}
         { [...Array(100)].map((value, index) =>
                 <mesh
+                    ref={ (element) => 
+                    {
+                        donuts.current[index] = element
+                    }}
                     geometry={ torusGeometry }
                     material={ matCapMaterial }
                     key={ index }
