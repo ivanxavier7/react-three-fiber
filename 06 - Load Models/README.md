@@ -1,6 +1,9 @@
 # Load Models
 
-1. Loader and Draco
+## 1 - Loader and Draco
+
+Load models with simple leader and draco, the recommended way is below with `Drei`.
+
 
 ``` javascript
 import { useLoader } from '@react-three/fiber'
@@ -31,11 +34,11 @@ const model = useLoader(
 />
 ```
 
-2. Loading Bigger models
+## 2 - Loading Bigger models
 
-When we want to start using the website before the models load we must use the `Suspense` component
+When we want to start using the website before the models load we must use the `Suspense` component.
 
-The `FallBack` attribute allows you to replace the model with something while it is not loaded
+The `FallBack` attribute allows you to replace the model with something while it is not loaded.
 
 `Model.jsx`
 ``` javascript
@@ -103,25 +106,101 @@ import Placeholder from './Placeholder'
 </Suspense>
 ```
 
-3. Drei
+
+## 3 - Drei
+
+1. Loading
+2. Preloading
+
+
+### 3.1 - Loading
+
+Recommended way to load models, supports Draco compression.
+
+* `useGLTF`
+
+``` javascript
+import { useGLTF } from '@react-three/drei'
+
+export default function Model()
+{
+    const model = useGLTF('./hamburger-draco.glb')
+
+    return <primitive
+        object={ model.scene }
+        scale={ 0.35 }
+        position-y={ -1 }
+    />
+}
+```
+
+
+### 3.2 - Preloading
+
+Allows you to load components even if they are not yet in use, we can use this as an introduction to hide the loading of more complex objects.
+
+* `useGLTF`
+
+``` javascript
+import { useGLTF } from '@react-three/drei'
+
+export default function Model()
+{
+    const model = useGLTF('./hamburger-draco.glb')
+
+    return <primitive
+        object={ model.scene }
+        scale={ 0.35 }
+        position-y={ -1 }
+    />
+}
+
+useGLTF.preload('./hamburger-draco.glb')
+```
+
+### 
+
+
+## 4 - Multiple instances
+
+add multiple instances of the object using the same geometry using `Clone`.
+
+``` javascript
+import { Clone, useGLTF } from '@react-three/drei'
+
+export default function Model()
+{
+    const model = useGLTF('./hamburger-draco.glb')
+
+    return <>
+        <Clone
+            object={ model.scene }
+            scale={ 0.35 }
+            position-y={ -1 }
+        />
+        <Clone
+            object={ model.scene }
+            scale={ 0.35 }
+            position-y={ -1 }
+            position-x={ -3.4 }
+        />
+        <Clone
+            object={ model.scene }
+            scale={ 0.35 }
+            position-y={ -1 }
+            position-x={ 3.4 }
+        />
+    </>
+}
+```
+
+## 5 - GLTF Component
 
 ``` javascript
 
 ```
 
-4. Multiple instances
-
-``` javascript
-
-```
-
-5. GLTF Component
-
-``` javascript
-
-```
-
-6. Animations
+## 6 - Animations
 
 ``` javascript
 
