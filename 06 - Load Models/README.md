@@ -1,5 +1,13 @@
 # Load Models
 
+1. Loader and Draco
+2. Loading Bigger Models
+3. Drei
+4. Multiple instances
+5. GLTF to Component
+6. Animations
+
+
 ## 1 - Loader and Draco
 
 Load models with simple leader and draco, the recommended way is below with `Drei`.

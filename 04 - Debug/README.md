@@ -4,6 +4,7 @@ Use React Developer Tools extension for the browser.
 
 1. StrictMode
 2. Leva
+3. Monitoring
 
 ## 1 - StrictMode
 

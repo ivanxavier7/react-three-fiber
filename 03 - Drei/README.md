@@ -10,7 +10,7 @@ Examples of some helpers using `Drei`
 4. HTML
 5. 3D Text
 6. Float animation
-7. Complex calculations
+7. Materials
 
 
 ## 1 - Setup

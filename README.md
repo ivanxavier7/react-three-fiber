@@ -3,6 +3,8 @@
 React - Data binding- application react to the data (event triggering)
 
 * [Three.js Docs](https://threejs.org/docs/)
+* [React Three Fiber Docs](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction)
+* [React Three Fiber Repository](https://github.com/pmndrs/react-three-fiber)
 
 1. [React](https://github.com/ivanxavier7/react-three-fiber#1---react)
 2. [R3F Simple Application](https://github.com/ivanxavier7/react-three-fiber#2---r3f-simple-application)
@@ -25,15 +27,15 @@ React - Data binding- application react to the data (event triggering)
 [React Docs](https://react.dev/learn)
 [React Courses](https://legacy.reactjs.org/community/courses.html)
 
-1. Setup
-2. JSX
-3. Conditional rendering
-4. Properties
-5. Mapping cycle
-6. Cache
-7. DOM
-8. People component
-9. Fetch API
+1. [Setup](https://github.com/ivanxavier7/react-three-fiber#11---setup)
+2. [JSX](https://github.com/ivanxavier7/react-three-fiber#12---event-reacting)
+3. [Conditional rendering](https://github.com/ivanxavier7/react-three-fiber#13---conditional-rendering)
+4. [Properties](https://github.com/ivanxavier7/react-three-fiber#14---properties)
+5. [Mapping cycle](https://github.com/ivanxavier7/react-three-fiber#15---mapping-cycle)
+6. [Cache](https://github.com/ivanxavier7/react-three-fiber#16---cache)
+7. [DOM](https://github.com/ivanxavier7/react-three-fiber#17---dom)
+8. [People component](https://github.com/ivanxavier7/react-three-fiber#18---people-component)
+9. [Fetch API](https://github.com/ivanxavier7/react-three-fiber#19---fetch-api)
 
 ## 1.1 - Setup
 
@@ -418,13 +420,13 @@ export default function People()
 
 * [Performance tips](https://docs.pmnd.rs/react-three-fiber/advanced/scaling-performance#instancing)
 
-1. Setup
-2. Implementation
-3. Animate
-4. OrbitControls
-5. Lights
-6. Custom Geometry
-7. Canvas
+1. [Setup](https://github.com/ivanxavier7/react-three-fiber#21---setup)
+2. [Implementation](https://github.com/ivanxavier7/react-three-fiber#22---implementation)
+3. [Animate](https://github.com/ivanxavier7/react-three-fiber#23---animate)
+4. [OrbitControls](https://github.com/ivanxavier7/react-three-fiber#24---orbitcontrols)
+5. [Lights](https://github.com/ivanxavier7/react-three-fiber#25---lights)
+6. [Custom Geometry](https://github.com/ivanxavier7/react-three-fiber#26---custom-geometry)
+7. [Canvas](https://github.com/ivanxavier7/react-three-fiber#27---canvas)
 
 ## 2.1 - Setup
 
@@ -698,13 +700,13 @@ The default is 1 to 2, so we can remove this.
 
 Examples of some helpers using `Drei`
 
-1. Setup
-2. Camera Controls
-3. Geometries
-4. HTML
-5. 3D Text
-6. Float animation
-7. Complex calculations
+1. [Setup](https://github.com/ivanxavier7/react-three-fiber#31---setup)
+2. [Camera Controls](https://github.com/ivanxavier7/react-three-fiber#32---camera-controls)
+3. [Geometries](https://github.com/ivanxavier7/react-three-fiber#33---geometries)
+4. [HTML](https://github.com/ivanxavier7/react-three-fiber#34---html)
+5. [3D Text](https://github.com/ivanxavier7/react-three-fiber#35---3d-text)
+6. [Float animation](https://github.com/ivanxavier7/react-three-fiber#36---float-animation)
+7. [Materials](https://github.com/ivanxavier7/react-three-fiber#37---materials)
 
 
 ## 3.1 - Setup
@@ -910,8 +912,9 @@ import { MeshReflectorMaterial } from '@react-three/drei'
 
 Use React Developer Tools extension for the browser.
 
-1. StrictMode
-2. Leva
+1. [StrictMode](https://github.com/ivanxavier7/react-three-fiber#41---strictmode)
+2. [Leva](https://github.com/ivanxavier7/react-three-fiber#42---leva)
+3. [Monitoring](https://github.com/ivanxavier7/react-three-fiber#43---monitoring)
 
 ## 4.1 - StrictMode
 
@@ -974,12 +977,12 @@ import { Perf } from 'r3f-perf'
 
 ## 5 - Environment and Staging
 
-1. Background Color
-2. Lights
-3. Shadows
-4. Sky
-5. Environments map
-6. Stage
+1. [Background Color](https://github.com/ivanxavier7/react-three-fiber#51---background-color)
+2. [Lights](https://github.com/ivanxavier7/react-three-fiber#52---lights)
+3. [Shadows](https://github.com/ivanxavier7/react-three-fiber#53---shadows)
+4. [Sky](https://github.com/ivanxavier7/react-three-fiber#54---sky)
+5. [Environments map](https://github.com/ivanxavier7/react-three-fiber#55---environments-map)
+6. [Stage](https://github.com/ivanxavier7/react-three-fiber#56---stage)
 
 
 ## 5.1 - Background Color
@@ -1427,6 +1430,13 @@ import { Stage } from '@react-three/drei'
 
 # 6 - Load Models
 
+1. [Loader and Draco](https://github.com/ivanxavier7/react-three-fiber#61---loader-and-draco)
+2. [Loading Bigger Models](https://github.com/ivanxavier7/react-three-fiber#62---loading-bigger-models)
+3. [Drei](https://github.com/ivanxavier7/react-three-fiber#63---drei)
+4. [Multiple instances](https://github.com/ivanxavier7/react-three-fiber#64---multiple-instances)
+5. [GLTF to Component](https://github.com/ivanxavier7/react-three-fiber#65---gltf-component)
+6. [Animations](https://github.com/ivanxavier7/react-three-fiber#66---animations)
+
 
 ## 6.1 - Loader and Draco
 
@@ -1819,9 +1829,9 @@ export default function Fox()
 
 # 7 - 3D Text
 
-1. Setup
-2. Particles
-3. Animate
+1. [Setup](https://github.com/ivanxavier7/react-three-fiber#71---setup)
+2. [Particles](https://github.com/ivanxavier7/react-three-fiber#72---particles)
+3. [Animate](https://github.com/ivanxavier7/react-three-fiber#73----animate)
 
 
 ## 7.1 - Setup
@@ -2070,9 +2080,9 @@ export default function Experience()
 
 # 8 - Baked Models and Shaders
 
-1. Loading Baked Models
-2. Drei Particles
-3. Shader Materials
+1. [Loading Baked Models](https://github.com/ivanxavier7/react-three-fiber#81---loading-baked-models)
+2. [Drei Particles](https://github.com/ivanxavier7/react-three-fiber#82---drei-particles)
+3. [Shader Materials](https://github.com/ivanxavier7/react-three-fiber#83---shader-materials)
 
 
 
