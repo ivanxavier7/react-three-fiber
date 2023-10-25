@@ -47,7 +47,7 @@ React - Data binding- application react to the data (event triggering)
 
 [Create React App - NPX](https://www.npmjs.com/package/create-react-app)
 
-Isstall project
+Istall project
 ``` bash
 npm install -g npx # Install npx globally
 npx create-react-app .
@@ -2153,7 +2153,9 @@ export default function Experience()
 
 ## 8.2 - Drei Particles
 
-[Drei helper](https://github.com/pmndrs/drei#sparkles)`Sparkles`
+[Drei helper](https://github.com/pmndrs/drei#sparkles)
+
+`Sparkles`
 
 ``` javascript
 import { Sparkles } from '@react-three/drei'

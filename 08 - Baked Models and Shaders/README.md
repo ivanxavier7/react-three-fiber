@@ -81,7 +81,9 @@ export default function Experience()
 
 ## 2 - Drei Particles
 
-[Drei helper](https://github.com/pmndrs/drei#sparkles)`Sparkles`
+[Drei helper](https://github.com/pmndrs/drei#sparkles)
+
+`Sparkles`
 
 ``` javascript
 import { Sparkles } from '@react-three/drei'

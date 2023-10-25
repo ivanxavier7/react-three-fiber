@@ -25,7 +25,7 @@
 
 [Create React App - NPX](https://www.npmjs.com/package/create-react-app)
 
-Isstall project
+Istall project
 ``` bash
 npm install -g npx # Install npx globally
 npx create-react-app .
