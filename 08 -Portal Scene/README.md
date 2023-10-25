@@ -100,6 +100,76 @@ import { Sparkles } from '@react-three/drei'
 
 See the shaders and patterns section in the [THREE repository](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced/08%20-%20Shaders) to help manipulate the different patterns with mathematical equations. This section is dedicated only to integrating Shader with Fiber.
 
-``` javascript
+Dont forget to add the `uniforms{}` needed:
+* uTime
+* uColorStart
+* uColorEnd
 
+
+``` bash
+npm i vite-plugin-glsl
+```
+
+``` javascript
+import { shaderMaterial, Center, useTexture, useGLTF, OrbitControls } from '@react-three/drei'
+
+import portalVertexShader from './shaders/portal/vertex.glsl'
+import portalFragmentShader from './shaders/portal/fragment.glsl'
+
+import * as THREE from 'three'
+import { useFrame, extend } from '@react-three/fiber'
+import { useRef } from 'react'
+
+const PortalMaterial = shaderMaterial(
+    {
+        uTime: 0,
+        uColorStart: new THREE.Color('#ffffff'),
+        uColorEnd: new THREE.Color('#000000'),
+    },
+    portalVertexShader,
+    portalFragmentShader
+)
+
+extend({ PortalMaterial })
+
+export default function Experience()
+{
+    const portalMaterial = useRef()
+    useFrame((state, delta) =>
+    {
+        portalMaterial.current.uTime += delta
+    })
+
+    const { nodes } = useGLTF('./model/portal.glb')
+    console.log(nodes)
+
+    const bakedTexture = useTexture('./model/baked.jpg')
+    bakedTexture.flipY = false
+
+    return <>
+
+        <color args={ ['#030202'] } attach="background"/>
+
+        <OrbitControls makeDefault />
+
+        <Center
+            rotation={ [
+                Math.PI * -0.10,
+                Math.PI * -0.85,
+                Math.PI * -0.01
+            ] }
+            position={ [-1, 0, -2] }
+        >
+            <mesh
+                geometry={ nodes.portalLight.geometry }
+                position={ nodes.portalLight.position }
+                rotation={ nodes.portalLight.rotation }
+            >
+                <portalMaterial
+                    ref={ portalMaterial }
+                />
+            </mesh>
+        </Center>
+    </>
+}
 ```
