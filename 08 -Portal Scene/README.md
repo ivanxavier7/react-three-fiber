@@ -84,7 +84,22 @@ export default function Experience()
 [Drei helper](https://github.com/pmndrs/drei#sparkles)`Sparkles`
 
 ``` javascript
+import { Sparkles } from '@react-three/drei'
 
+<Sparkles
+    size={ 2 }
+    scale={ [ 4, 2, 4]}
+    position-y={ 1 }
+    speed={ 0.2 }
+    count={ 20 }
+    color="#2cb5c7"
+/>
 ```
 
 ## 3 - Shader Materials
+
+See the shaders and patterns section in the [THREE repository](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced/08%20-%20Shaders) to help manipulate the different patterns with mathematical equations. This section is dedicated only to integrating Shader with Fiber.
+
+``` javascript
+
+```
