@@ -13,7 +13,7 @@
 8. People component
 9. Fetch API
 
-### 1 - Setup
+## 1 - Setup
 
 1. NPX-Node
 2. Scratch

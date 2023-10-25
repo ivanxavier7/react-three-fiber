@@ -4,19 +4,19 @@ React - Data binding- application react to the data (event triggering)
 
 * [Three.js Docs](https://threejs.org/docs/)
 
-1. React
-2. R3F Simple Application
-3. Drei
-4. Debug
-5. Environment and Staging
-6. Load Models
-7. 3D Text
-8. Baked Models and Shaders
-9. Mouse Events
-10. Post-processing
-11. Computer Scene
-12. Physics
-13. Simple Game
+1. [React](https://github.com/ivanxavier7/react-three-fiber#1---react)
+2. [R3F Simple Application](https://github.com/ivanxavier7/react-three-fiber#2---r3f-simple-application)
+3. [Drei](https://github.com/ivanxavier7/react-three-fiber#3---drei)
+4. [Debug](https://github.com/ivanxavier7/react-three-fiber#4---debug)
+5. [Environment and Staging](https://github.com/ivanxavier7/react-three-fiber#5---environment-and-staging)
+6. [Load Models](https://github.com/ivanxavier7/react-three-fiber#6---load-models)
+7. [3D Text](https://github.com/ivanxavier7/react-three-fiber#7---3d-text)
+8. [Baked Models and Shaders](https://github.com/ivanxavier7/react-three-fiber#8---baked-models-and-shaders)
+9. [Mouse Events](https://github.com/ivanxavier7/react-three-fiber#9---mouse-events)
+10. [Post-processing]()
+11. [Computer Scene]()
+12. [Physics]()
+13. [Simple Game]()
 
 ------
 
@@ -35,13 +35,13 @@ React - Data binding- application react to the data (event triggering)
 8. People component
 9. Fetch API
 
-### 1 - Setup
+## 1.1 - Setup
 
 1. NPX-Node
 2. Scratch
 3. Vite - Recommended
 
-### 1.1 - NPX 
+### 1.1.1 - NPX 
 
 * Needs `npm` to get dependencies, ideal to modular applications
 
@@ -53,7 +53,7 @@ npm install -g npx # Install npx globally
 npx create-react-app .
 ```
 
-### 1.2 - Scratch
+### 1.1.2 - Scratch
 
 * NPX adds unecessary files so we can do it from scratch
 
@@ -111,7 +111,7 @@ npm run dev
 10. Choose yes to add default browser configurations
 
 
-### 1.3 - Vite
+### 1.1.3 - Vite
 
 1. Create Vite project
 
@@ -142,7 +142,7 @@ npm install react-scripts --save
 
 ------
 
-## 2 - Event Reacting
+## 1.2 - Event Reacting
 
 `useState`
 
@@ -191,7 +191,7 @@ useEffect(() => {
 }, [])  
 ```
 
-## 3 - Conditional rendering
+## 1.3 - Conditional rendering
 
 Rendering components conditionally, in the example we use a button that toggle click component
 
@@ -218,7 +218,7 @@ export default function App()
 
 ------
 
-## 4 - Properties
+## 1.4 - Properties
 
 Multiple `Clickers` using the same local storage variable, when we update the page the last value to be updated will be shared by the other `Clickers`, we can catch the content inside one component with the `{ children }` property
 
@@ -255,7 +255,7 @@ export default function Clicker({keyName})
 
 -------
 
-## 5 - Mapping cycle
+## 1.5 - Mapping cycle
 
 We can use the `map()` function to cycle through functions through each element of an array and use its index
 
@@ -290,7 +290,7 @@ tempArray.map((value, index) =>{
 
 ------
 
-## 6 - Cache
+## 1.6 - Cache
 
 When we need to use the cache to store some information we must use `useMemo`
 
@@ -313,7 +313,7 @@ const colors = useMemo(() => {
 
 ------
 
-## 7 - DOM
+## 1.7 - DOM
 
 To access the component itself, we should use `useRef`
 
@@ -340,7 +340,7 @@ useEffect(() => {
 
 ------
 
-## 8 - People component
+## 1.8 - People component
 
 Basic example of a component with a list of objects and showing them in a list
 
@@ -367,7 +367,7 @@ export default function People()
 }
 ```
 
-## 9 - Fetch API
+## 1.9 - Fetch API
 
 Using the same example as the previous component, we can see an example of a request to an API and the application of its data in the component
 
@@ -1824,13 +1824,13 @@ export default function Fox()
 3. Animate
 
 
-# 7.1 - Setup
+## 7.1 - Setup
 
 1. Text Parameters
 2. Matcap
 
 
-## 7.1.1 Text Parameters
+### 7.1.1 Text Parameters
 
 [Text Parameters](https://threejs.org/docs/#examples/en/geometries/TextGeometry)
 
@@ -1845,7 +1845,7 @@ export default function Fox()
 * bevelSegments
 
 
-## 7.1.2 Matcap
+### 7.1.2 Matcap
 
 [Matcap Materials](https://github.com/emmelleppi/matcaps)
 
@@ -1874,13 +1874,13 @@ export default function Experience()
 }
 ```
 
-# 7.2 - Particles
+## 7.2 - Particles
 
 1. React Fiber
 2. Three.js
 
 
-## 7.2.1 - React Fiber
+### 7.2.1 - React Fiber
 Use spread operator in a fixed array to map through each of the spaces.
 
 ``` javascript
@@ -1928,7 +1928,7 @@ export default function Experience()
 }
 ```
 
-## 7.2.2 - Three.js
+### 7.2.2 - Three.js
 
 ``` javascript
 import { useMatcapTexture } from '@react-three/drei'

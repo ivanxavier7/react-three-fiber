@@ -5,13 +5,13 @@
 3. Animate
 
 
-# 1 - Setup
+## 1 - Setup
 
 1. Text Parameters
 2. Matcap
 
 
-## 1.1 Text Parameters
+### 1.1 Text Parameters
 
 [Text Parameters](https://threejs.org/docs/#examples/en/geometries/TextGeometry)
 
@@ -26,7 +26,7 @@
 * bevelSegments
 
 
-## 1.2 Matcap
+### 1.2 Matcap
 
 [Matcap Materials](https://github.com/emmelleppi/matcaps)
 
@@ -55,13 +55,13 @@ export default function Experience()
 }
 ```
 
-# 2 - Particles
+## 2 - Particles
 
 1. React Fiber
 2. Three.js
 
 
-## 2.1 - React Fiber
+### 2.1 - React Fiber
 Use spread operator in a fixed array to map through each of the spaces.
 
 ``` javascript
@@ -109,7 +109,7 @@ export default function Experience()
 }
 ```
 
-## 2.2 - Three.js
+### 2.2 - Three.js
 
 ``` javascript
 import { useMatcapTexture } from '@react-three/drei'
