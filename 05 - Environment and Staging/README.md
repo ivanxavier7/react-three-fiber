@@ -98,6 +98,7 @@ Realistic shadows have slightly bluer pigmentation, change the color accordingly
 
 1. [Setup](https://github.com/ivanxavier7/react-three-fiber#531---setup)
 2. [Baking](https://github.com/ivanxavier7/react-three-fiber#532---baking)
+3. [Configure](https://github.com/ivanxavier7/react-three-fiber#533---configure)
 
 ### 3.1 - Setup
 

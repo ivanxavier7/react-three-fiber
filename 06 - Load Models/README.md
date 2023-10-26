@@ -291,9 +291,9 @@ import Hamburger from './Hamburger'
 
 ## 6 - Animations
 
-1. Load
-2. Transitions
-3. Control with GUI / Leva
+1. [Load](https://github.com/ivanxavier7/react-three-fiber#661---load)
+2. [Transitions](https://github.com/ivanxavier7/react-three-fiber#662---transitions)
+3. [Control with GUI / Leva](https://github.com/ivanxavier7/react-three-fiber#663---control-with-gui--leva)
 
 
 ### 6.1 - Load

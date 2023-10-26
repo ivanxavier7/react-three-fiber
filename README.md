@@ -8,6 +8,9 @@ React - Data binding- application react to the data (event triggering)
 
 1. [React](https://github.com/ivanxavier7/react-three-fiber#1---react)
     1. [Setup](https://github.com/ivanxavier7/react-three-fiber#11---setup)
+        1. [NPX-Node](https://github.com/ivanxavier7/react-three-fiber#111---npx)
+        2. [Scratch](https://github.com/ivanxavier7/react-three-fiber#112---scratch)
+        3. [Vite - Recommended](https://github.com/ivanxavier7/react-three-fiber#113---vite)
     2. [JSX](https://github.com/ivanxavier7/react-three-fiber#12---event-reacting)
     3. [Conditional rendering](https://github.com/ivanxavier7/react-three-fiber#13---conditional-rendering)
     4. [Properties](https://github.com/ivanxavier7/react-three-fiber#14---properties)
@@ -17,12 +20,91 @@ React - Data binding- application react to the data (event triggering)
     8. [People component](https://github.com/ivanxavier7/react-three-fiber#18---people-component)
     9. [Fetch API](https://github.com/ivanxavier7/react-three-fiber#19---fetch-api)
 2. [R3F Simple Application](https://github.com/ivanxavier7/react-three-fiber#2---r3f-simple-application)
+    1. [Setup](https://github.com/ivanxavier7/react-three-fiber#21---setup)
+    2. [Implementation](https://github.com/ivanxavier7/react-three-fiber#22---implementation)
+    3. [Animate](https://github.com/ivanxavier7/react-three-fiber#23---animate)
+    4. [OrbitControls](https://github.com/ivanxavier7/react-three-fiber#24---orbitcontrols)
+    5. [Lights](https://github.com/ivanxavier7/react-three-fiber#25---lights)
+    6. [Custom Geometry](https://github.com/ivanxavier7/react-three-fiber#26---custom-geometry)
+    7. [Canvas](https://github.com/ivanxavier7/react-three-fiber#27---canvas)
+        1. [Animating Camera](https://github.com/ivanxavier7/react-three-fiber#271---animating-camera)
+        2. [Antialias](https://github.com/ivanxavier7/react-three-fiber#272---antialias)
+        3. [ToneMapping](https://github.com/ivanxavier7/react-three-fiber#273---tonemapping)
+        4. [Encoding](https://github.com/ivanxavier7/react-three-fiber#274---encoding)
+        5. [Pixel Ratio](https://github.com/ivanxavier7/react-three-fiber#275---pixel-ratio)
 3. [Drei](https://github.com/ivanxavier7/react-three-fiber#3---drei)
+    1. [Setup](https://github.com/ivanxavier7/react-three-fiber#31---setup)
+    2. [Camera Controls](https://github.com/ivanxavier7/react-three-fiber#32---camera-controls)
+    3. [Geometries](https://github.com/ivanxavier7/react-three-fiber#33---geometries)
+        1. [Transform Controls](https://github.com/ivanxavier7/react-three-fiber#331---transform-controls)
+        2. [Pivot Controls](https://github.com/ivanxavier7/react-three-fiber#332---pivot-controls)
+    4. [HTML](https://github.com/ivanxavier7/react-three-fiber#34---html)
+    5. [3D Text](https://github.com/ivanxavier7/react-three-fiber#35---3d-text)
+    6. [Float animation](https://github.com/ivanxavier7/react-three-fiber#36---float-animation)
+    7. [Materials](https://github.com/ivanxavier7/react-three-fiber#37---materials)
 4. [Debug](https://github.com/ivanxavier7/react-three-fiber#4---debug)
+    1. [StrictMode](https://github.com/ivanxavier7/react-three-fiber#41---strictmode)
+    2. [Leva](https://github.com/ivanxavier7/react-three-fiber#42---leva)
+    3. [Monitoring](https://github.com/ivanxavier7/react-three-fiber#43---monitoring)
 5. [Environment and Staging](https://github.com/ivanxavier7/react-three-fiber#5---environment-and-staging)
+    1. [Background Color](https://github.com/ivanxavier7/react-three-fiber#51---background-color)
+        1. [CSS](https://github.com/ivanxavier7/react-three-fiber#51---background-color)
+        2. [Javascript](https://github.com/ivanxavier7/react-three-fiber#512---javascript)
+        3. [Three.js](https://github.com/ivanxavier7/react-three-fiber#513---threejs)
+        4. [React Three Fiber](https://github.com/ivanxavier7/react-three-fiber#514---react-three-fiber)
+    2. [Lights](https://github.com/ivanxavier7/react-three-fiber#52---lights)
+        1. [Light Helpers](https://github.com/ivanxavier7/react-three-fiber#521-light-helpers)
+        2. [Types of lights](https://github.com/ivanxavier7/react-three-fiber#522-types-of-lights)
+            1. [Sharp shadows](https://github.com/ivanxavier7/react-three-fiber#5331---sharp-shadows)
+            2. [Soft shadows](https://github.com/ivanxavier7/react-three-fiber#5332---soft-shadows)
+            3. [Accumulative shadows](https://github.com/ivanxavier7/react-three-fiber#5333---accumulative-shadows)
+            4. [Contact shadows](https://github.com/ivanxavier7/react-three-fiber#5334---contact-shadows)
+    3. [Shadows](https://github.com/ivanxavier7/react-three-fiber#53---shadows)
+        1. [Setup](https://github.com/ivanxavier7/react-three-fiber#531---setup)
+        2. [Baking](https://github.com/ivanxavier7/react-three-fiber#532---baking)
+        3. [Configure](https://github.com/ivanxavier7/react-three-fiber#533---configure)
+    4. [Sky](https://github.com/ivanxavier7/react-three-fiber#54---sky)
+    5. [Environments map](https://github.com/ivanxavier7/react-three-fiber#55---environments-map)
+        1. [Cube Map](https://github.com/ivanxavier7/react-three-fiber#551---cube-map)
+        2. [HDR Map](https://github.com/ivanxavier7/react-three-fiber#552---hdr-map)
+        3. [Preset](https://github.com/ivanxavier7/react-three-fiber#553---preset)
+        4. [Custom](https://github.com/ivanxavier7/react-three-fiber#554---custom)
+        5. [Custom Lights](https://github.com/ivanxavier7/react-three-fiber#555-custom-lights)
+    6. [Stage](https://github.com/ivanxavier7/react-three-fiber#56---stage)
+        1. [Loader and Draco](https://github.com/ivanxavier7/react-three-fiber#61---loader-and-draco)
+        2. [Loading Bigger Models](https://github.com/ivanxavier7/react-three-fiber#62---loading-bigger-models)
+        3. [Drei](https://github.com/ivanxavier7/react-three-fiber#63---drei)
+        4. [Multiple instances](https://github.com/ivanxavier7/react-three-fiber#64---multiple-instances)
+        5. [GLTF to Component](https://github.com/ivanxavier7/react-three-fiber#65---gltf-component)
+        6. [Animations](https://github.com/ivanxavier7/react-three-fiber#66---animations)
 6. [Load Models](https://github.com/ivanxavier7/react-three-fiber#6---load-models)
+    1. [Loader and Draco](https://github.com/ivanxavier7/react-three-fiber#61---loader-and-draco)
+    2. [Loading Bigger Models](https://github.com/ivanxavier7/react-three-fiber#62---loading-bigger-models)
+        1. [Loading](https://github.com/ivanxavier7/react-three-fiber#631---loading)
+        2. [Preloading](https://github.com/ivanxavier7/react-three-fiber#632---preloading)
+    3. [Drei](https://github.com/ivanxavier7/react-three-fiber#63---drei)
+    4. [Multiple instances](https://github.com/ivanxavier7/react-three-fiber#64---multiple-instances)
+    5. [GLTF to Component](https://github.com/ivanxavier7/react-three-fiber#65---gltf-component)
+        1. [Convert](https://github.com/ivanxavier7/react-three-fiber#651---convert)
+        2. [Import and Shadow Acne](https://github.com/ivanxavier7/react-three-fiber#652---import-and-shadow-acne)
+    6. [Animations](https://github.com/ivanxavier7/react-three-fiber#66---animations)
+        1. [Load](https://github.com/ivanxavier7/react-three-fiber#661---load)
+        2. [Transitions](https://github.com/ivanxavier7/react-three-fiber#662---transitions)
+        3. [Control with GUI / Leva](https://github.com/ivanxavier7/react-three-fiber#663---control-with-gui--leva)
 7. [3D Text](https://github.com/ivanxavier7/react-three-fiber#7---3d-text)
+    1. [Setup](https://github.com/ivanxavier7/react-three-fiber#71---setup)
+        1. [Text Parameters](https://github.com/ivanxavier7/react-three-fiber#711-text-parameters)
+        2. [Matcap](https://github.com/ivanxavier7/react-three-fiber#712-matcap)
+    2. [Particles](https://github.com/ivanxavier7/react-three-fiber#72---particles)
+        1. [React Fiber](https://github.com/ivanxavier7/react-three-fiber#721---react-fiber)
+        2. [Three.js](https://github.com/ivanxavier7/react-three-fiber#722---threejs)
+    3. [Animate](https://github.com/ivanxavier7/react-three-fiber#73----animate)
+        1. [Group](https://github.com/ivanxavier7/react-three-fiber#731---group)
+        2. [Array](https://github.com/ivanxavier7/react-three-fiber#732---array)
 8. [Baked Models and Shaders](https://github.com/ivanxavier7/react-three-fiber#8---baked-models-and-shaders)
+    1. [Loading Baked Models](https://github.com/ivanxavier7/react-three-fiber#81---loading-baked-models)
+    2. [Drei Particles](https://github.com/ivanxavier7/react-three-fiber#82---drei-particles)
+    3. [Shader Materials](https://github.com/ivanxavier7/react-three-fiber#83---shader-materials)
 9. [Mouse Events](https://github.com/ivanxavier7/react-three-fiber#9---mouse-events)
 10. [Post-processing]()
 11. [Computer Scene]()
@@ -585,7 +667,7 @@ export default function CustomObject()
 
 ## 2.7 - Canvas
 
-1. [Animating camera](https://github.com/ivanxavier7/react-three-fiber#271---animating-camera)
+1. [Animating Camera](https://github.com/ivanxavier7/react-three-fiber#271---animating-camera)
 2. [Antialias](https://github.com/ivanxavier7/react-three-fiber#272---antialias)
 3. [ToneMapping](https://github.com/ivanxavier7/react-three-fiber#273---tonemapping)
 4. [Encoding](https://github.com/ivanxavier7/react-three-fiber#274---encoding)
@@ -615,7 +697,7 @@ But these parameters may have to be modified by us
 </Canvas>
 ```
 
-### 2.7.1 - Animating camera
+### 2.7.1 - Animating Camera
 
 Make the camera move in circles around the scene, while looking at its center
 
@@ -1083,6 +1165,7 @@ Realistic shadows have slightly bluer pigmentation, change the color accordingly
 
 1. [Setup](https://github.com/ivanxavier7/react-three-fiber#531---setup)
 2. [Baking](https://github.com/ivanxavier7/react-three-fiber#532---baking)
+3. [Configure](https://github.com/ivanxavier7/react-three-fiber#533---configure)
 
 ### 5.3.1 - Setup
 
@@ -1722,9 +1805,9 @@ import Hamburger from './Hamburger'
 
 ## 6.6 - Animations
 
-1. [Load]()
-2. [Transitions]()
-3. [Control with GUI / Leva]()
+1. [Load](https://github.com/ivanxavier7/react-three-fiber#661---load)
+2. [Transitions](https://github.com/ivanxavier7/react-three-fiber#662---transitions)
+3. [Control with GUI / Leva](https://github.com/ivanxavier7/react-three-fiber#663---control-with-gui--leva)
 
 
 ### 6.6.1 - Load
@@ -1837,8 +1920,8 @@ export default function Fox()
 
 ## 7.1 - Setup
 
-1. Text Parameters
-2. Matcap
+1. [Text Parameters](https://github.com/ivanxavier7/react-three-fiber#711-text-parameters)
+2. [Matcap](https://github.com/ivanxavier7/react-three-fiber#712-matcap)
 
 
 ### 7.1.1 Text Parameters
@@ -1887,8 +1970,8 @@ export default function Experience()
 
 ## 7.2 - Particles
 
-1. React Fiber
-2. Three.js
+1. [React Fiber](https://github.com/ivanxavier7/react-three-fiber#721---react-fiber)
+2. [Three.js](https://github.com/ivanxavier7/react-three-fiber#722---threejs)
 
 
 ### 7.2.1 - React Fiber
@@ -1989,8 +2072,8 @@ export default function Experience()
 
 ## 7.3 -  Animate
 
-1. Group
-2. Array
+1. [Group](https://github.com/ivanxavier7/react-three-fiber#731---group)
+2. [Array](https://github.com/ivanxavier7/react-three-fiber#732---array)
 
 
 ### 7.3.1 - Group

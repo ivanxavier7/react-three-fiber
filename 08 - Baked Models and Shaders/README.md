@@ -1,8 +1,8 @@
 # Baked Models and Shaders
 
-1. Loading Baked Models
-2. Drei Particles
-3. Shader Materials
+1. [Loading Baked Models](https://github.com/ivanxavier7/react-three-fiber#81---loading-baked-models)
+2. [Drei Particles](https://github.com/ivanxavier7/react-three-fiber#82---drei-particles)
+3. [Shader Materials](https://github.com/ivanxavier7/react-three-fiber#83---shader-materials)
 
 
 ## 1 - Loading Baked Models

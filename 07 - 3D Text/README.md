@@ -1,14 +1,14 @@
 # 3D Text
 
-1. Setup
-2. Particles
-3. Animate
+1. [Setup](https://github.com/ivanxavier7/react-three-fiber#71---setup)
+2. [Particles](https://github.com/ivanxavier7/react-three-fiber#72---particles)
+3. [Animate](https://github.com/ivanxavier7/react-three-fiber#73----animate)
 
 
 ## 1 - Setup
 
-1. Text Parameters
-2. Matcap
+1. [Text Parameters](https://github.com/ivanxavier7/react-three-fiber#711-text-parameters)
+2. [Matcap](https://github.com/ivanxavier7/react-three-fiber#712-matcap)
 
 
 ### 1.1 Text Parameters
@@ -57,8 +57,8 @@ export default function Experience()
 
 ## 2 - Particles
 
-1. React Fiber
-2. Three.js
+1. [React Fiber](https://github.com/ivanxavier7/react-three-fiber#721---react-fiber)
+2. [Three.js](https://github.com/ivanxavier7/react-three-fiber#722---threejs)
 
 
 ### 2.1 - React Fiber
