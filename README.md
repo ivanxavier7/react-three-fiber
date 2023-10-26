@@ -6,6 +6,7 @@ React - Data binding- application react to the data (event triggering)
 * [React Three Fiber Docs](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction)
 * [React Three Fiber Repository](https://github.com/pmndrs/react-three-fiber)
 
+
 1. [React](https://github.com/ivanxavier7/react-three-fiber#1---react)
     1. [Setup](https://github.com/ivanxavier7/react-three-fiber#11---setup)
         1. [NPX-Node](https://github.com/ivanxavier7/react-three-fiber#111---npx)
@@ -19,6 +20,8 @@ React - Data binding- application react to the data (event triggering)
     7. [DOM](https://github.com/ivanxavier7/react-three-fiber#17---dom)
     8. [People component](https://github.com/ivanxavier7/react-three-fiber#18---people-component)
     9. [Fetch API](https://github.com/ivanxavier7/react-three-fiber#19---fetch-api)
+
+
 2. [R3F Simple Application](https://github.com/ivanxavier7/react-three-fiber#2---r3f-simple-application)
     1. [Setup](https://github.com/ivanxavier7/react-three-fiber#21---setup)
     2. [Implementation](https://github.com/ivanxavier7/react-three-fiber#22---implementation)
@@ -32,6 +35,8 @@ React - Data binding- application react to the data (event triggering)
         3. [ToneMapping](https://github.com/ivanxavier7/react-three-fiber#273---tonemapping)
         4. [Encoding](https://github.com/ivanxavier7/react-three-fiber#274---encoding)
         5. [Pixel Ratio](https://github.com/ivanxavier7/react-three-fiber#275---pixel-ratio)
+
+
 3. [Drei](https://github.com/ivanxavier7/react-three-fiber#3---drei)
     1. [Setup](https://github.com/ivanxavier7/react-three-fiber#31---setup)
     2. [Camera Controls](https://github.com/ivanxavier7/react-three-fiber#32---camera-controls)
@@ -42,10 +47,14 @@ React - Data binding- application react to the data (event triggering)
     5. [3D Text](https://github.com/ivanxavier7/react-three-fiber#35---3d-text)
     6. [Float animation](https://github.com/ivanxavier7/react-three-fiber#36---float-animation)
     7. [Materials](https://github.com/ivanxavier7/react-three-fiber#37---materials)
+
+
 4. [Debug](https://github.com/ivanxavier7/react-three-fiber#4---debug)
     1. [StrictMode](https://github.com/ivanxavier7/react-three-fiber#41---strictmode)
     2. [Leva](https://github.com/ivanxavier7/react-three-fiber#42---leva)
     3. [Monitoring](https://github.com/ivanxavier7/react-three-fiber#43---monitoring)
+
+
 5. [Environment and Staging](https://github.com/ivanxavier7/react-three-fiber#5---environment-and-staging)
     1. [Background Color](https://github.com/ivanxavier7/react-three-fiber#51---background-color)
         1. [CSS](https://github.com/ivanxavier7/react-three-fiber#51---background-color)
@@ -77,6 +86,8 @@ React - Data binding- application react to the data (event triggering)
         4. [Multiple instances](https://github.com/ivanxavier7/react-three-fiber#64---multiple-instances)
         5. [GLTF to Component](https://github.com/ivanxavier7/react-three-fiber#65---gltf-component)
         6. [Animations](https://github.com/ivanxavier7/react-three-fiber#66---animations)
+
+
 6. [Load Models](https://github.com/ivanxavier7/react-three-fiber#6---load-models)
     1. [Loader and Draco](https://github.com/ivanxavier7/react-three-fiber#61---loader-and-draco)
     2. [Loading Bigger Models](https://github.com/ivanxavier7/react-three-fiber#62---loading-bigger-models)
@@ -91,6 +102,8 @@ React - Data binding- application react to the data (event triggering)
         1. [Load](https://github.com/ivanxavier7/react-three-fiber#661---load)
         2. [Transitions](https://github.com/ivanxavier7/react-three-fiber#662---transitions)
         3. [Control with GUI / Leva](https://github.com/ivanxavier7/react-three-fiber#663---control-with-gui--leva)
+
+
 7. [3D Text](https://github.com/ivanxavier7/react-three-fiber#7---3d-text)
     1. [Setup](https://github.com/ivanxavier7/react-three-fiber#71---setup)
         1. [Text Parameters](https://github.com/ivanxavier7/react-three-fiber#711-text-parameters)
@@ -101,14 +114,26 @@ React - Data binding- application react to the data (event triggering)
     3. [Animate](https://github.com/ivanxavier7/react-three-fiber#73----animate)
         1. [Group](https://github.com/ivanxavier7/react-three-fiber#731---group)
         2. [Array](https://github.com/ivanxavier7/react-three-fiber#732---array)
+
+
 8. [Baked Models and Shaders](https://github.com/ivanxavier7/react-three-fiber#8---baked-models-and-shaders)
     1. [Loading Baked Models](https://github.com/ivanxavier7/react-three-fiber#81---loading-baked-models)
     2. [Drei Particles](https://github.com/ivanxavier7/react-three-fiber#82---drei-particles)
     3. [Shader Materials](https://github.com/ivanxavier7/react-three-fiber#83---shader-materials)
+
+
 9. [Mouse Events](https://github.com/ivanxavier7/react-three-fiber#9---mouse-events)
+
+
 10. [Post-processing]()
+
+
 11. [Computer Scene]()
+
+
 12. [Physics]()
+
+
 13. [Simple Game]()
 
 ------
