@@ -1,6 +1,7 @@
 import './style.css'
 import ReactDOM from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
+import { Bvh } from '@react-three/drei'
 import Experience from './Experience.jsx'
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))
@@ -13,7 +14,11 @@ root.render(
             far: 200,
             position: [ - 4, 3, 6 ]
         } }
+        onPointerMissed={ () => {console.log('You missed the click!')}}
     >
-        <Experience />
+        <Bvh>
+            <Experience />
+        </Bvh>
+        <color args={ [ '#0a0a22' ] } attach="background" />
     </Canvas>
 )

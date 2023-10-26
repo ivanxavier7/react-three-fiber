@@ -152,7 +152,7 @@ React - Data binding- application react to the data (event triggering)
     3. [Shader Materials](https://github.com/ivanxavier7/react-three-fiber#83---shader-materials)
 
 
-9. [Mouse Events](https://github.com/ivanxavier7/react-three-fiber#9---mouse-events)
+9. [Mouse Events and Raycasting]()
 
 
 10. [Post-processing]()
@@ -1170,8 +1170,6 @@ const created = ({ scene }) =>
 
 ### 5.1.4 - React Three Fiber
 ``` javascript
-import * as THREE from 'three'
-
 <Canvas>
     <color args={ [ '#0000ff' ] }  attach="background"/>
 </Canvas>
