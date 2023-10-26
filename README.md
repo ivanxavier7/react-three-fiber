@@ -154,7 +154,14 @@ React - Data binding- application react to the data (event triggering)
 
 9. [Mouse Events and Raycasting]()
 
-
+    1. [Event Example](https://github.com/ivanxavier7/react-three-fiber#91---event-example)
+    2. [Event Information](https://github.com/ivanxavier7/react-three-fiber#92---event-information)
+    3. [Types of Events](https://github.com/ivanxavier7/react-three-fiber#93---types-of-events)
+    4. [Applications](https://github.com/ivanxavier7/react-three-fiber#94---applications)
+    5. [Occluding / Block Ray](https://github.com/ivanxavier7/react-three-fiber#95---occlusion--block-ray)
+    6. [Cursor](https://github.com/ivanxavier7/react-three-fiber#96---cursor)
+    7. [Model Events](https://github.com/ivanxavier7/react-three-fiber#97---model-events)
+    8. [Performance](https://github.com/ivanxavier7/react-three-fiber#98---performance)
 
 10. [Post-processing]()
 
@@ -2404,14 +2411,14 @@ export default function Experience()
 
 # 9 - Mouse Events and Raycasting
 
-1. Event Example
-2. Event Information
-3. Types of Events
-4. Applications
-5. Occluding / Block Ray
-6. Cursor
-7. Model Events
-8. Performance
+1. [Event Example](https://github.com/ivanxavier7/react-three-fiber#91---event-example)
+2. [Event Information](https://github.com/ivanxavier7/react-three-fiber#92---event-information)
+3. [Types of Events](https://github.com/ivanxavier7/react-three-fiber#93---types-of-events)
+4. [Applications](https://github.com/ivanxavier7/react-three-fiber#94---applications)
+5. [Occluding / Block Ray](https://github.com/ivanxavier7/react-three-fiber#95---occlusion--block-ray)
+6. [Cursor](https://github.com/ivanxavier7/react-three-fiber#96---cursor)
+7. [Model Events](https://github.com/ivanxavier7/react-three-fiber#97---model-events)
+8. [Performance](https://github.com/ivanxavier7/react-three-fiber#98---performance)
 
 ## 9.1 - Event Example
 
@@ -2461,19 +2468,19 @@ Information about the event associated with the click, we can see the objects th
 
 ## 9.3 - Types of Events
 
-1. Click
-2. Right Click
-3. Double Click
-4. Pointer Up
-5. Pointer Down
-6. Pointer Over
-7. Pointer Enter
-8. Pointer Out
-9. Pointer Leave
-10. Pointer Move
-11. Pointer Miss
+1. [Click]()
+2. [Right Click]()
+3. [Double Click]()
+4. [Pointer Up]()
+5. [Pointer Down]()
+6. [Pointer Over]()
+7. [Pointer Enter]()
+8. [Pointer Out]()
+9. [Pointer Leave]()
+10. [Pointer Move]()
+11. [Pointer Miss]()
 
-## 9.3.1 - Click
+### 9.3.1 - Click
 
 `onClick()`
 
@@ -2599,7 +2606,7 @@ When the pointer stop hovering the objects, multiple objects.
 </mesh>
 ```
 
-### 9.3.8 - Pointer Leave
+### 9.3.9 - Pointer Leave
 
 `onPointerLeave`
 
@@ -2615,7 +2622,7 @@ When the pointer leaves the object, single object.
 </mesh>
 ```
 
-### 9.3.9 - Pointer Move
+### 9.3.10 - Pointer Move
 
 `onPointerMove`
 
@@ -2631,7 +2638,7 @@ When the pointer moves overing the object, one per frame.
 </mesh>
 ```
 
-### 9.3.10 - Pointer Miss
+### 9.3.11 - Pointer Miss
 
 `onPointerMissed`
 
