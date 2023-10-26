@@ -2,9 +2,9 @@
 
 Use React Developer Tools extension for the browser.
 
-1. StrictMode
-2. Leva
-3. Monitoring
+1. [StrictMode](https://github.com/ivanxavier7/react-three-fiber#41---strictmode)
+2. [Leva](https://github.com/ivanxavier7/react-three-fiber#42---leva)
+3. [Monitoring](https://github.com/ivanxavier7/react-three-fiber#43---monitoring)
 
 ## 1 - StrictMode
 

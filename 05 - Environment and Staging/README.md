@@ -1,19 +1,19 @@
 # Environment and Staging
 
-1. Background Color
-2. Lights
-3. Shadows
-4. Sky
-5. Environments map
-6. Stage
+1. [Background Color](https://github.com/ivanxavier7/react-three-fiber#51---background-color)
+2. [Lights](https://github.com/ivanxavier7/react-three-fiber#52---lights)
+3. [Shadows](https://github.com/ivanxavier7/react-three-fiber#53---shadows)
+4. [Sky](https://github.com/ivanxavier7/react-three-fiber#54---sky)
+5. [Environments map](https://github.com/ivanxavier7/react-three-fiber#55---environments-map)
+6. [Stage](https://github.com/ivanxavier7/react-three-fiber#56---stage)
 
 
 ## 1 - Background Color
 
-1. CSS
-2. Javascript
-3. Three.js
-4. React Three Fiber
+1. [CSS](https://github.com/ivanxavier7/react-three-fiber#51---background-color)
+2. [Javascript](https://github.com/ivanxavier7/react-three-fiber#512---javascript)
+3. [Three.js](https://github.com/ivanxavier7/react-three-fiber#513---threejs)
+4. [React Three Fiber](https://github.com/ivanxavier7/react-three-fiber#514---react-three-fiber)
 
 
 ### 1.1 - CSS
@@ -58,8 +58,8 @@ import * as THREE from 'three'
 
 ## 2 - Lights
 
-1. Light Helpers
-2. Types of lights
+1. [Light Helpers](https://github.com/ivanxavier7/react-three-fiber#521-light-helpers)
+2. [Types of lights](https://github.com/ivanxavier7/react-three-fiber#522-types-of-lights)
 
 
 ### 2.1. Light Helpers
@@ -96,8 +96,8 @@ useHelper(directionalLight, THREE.DirectionalLightHelper, 1)
 
 Realistic shadows have slightly bluer pigmentation, change the color accordingly
 
-1. Setup
-2. Baking
+1. [Setup](https://github.com/ivanxavier7/react-three-fiber#531---setup)
+2. [Baking](https://github.com/ivanxavier7/react-three-fiber#532---baking)
 
 ### 3.1 - Setup
 
@@ -149,10 +149,10 @@ import { BakeShadows } from '@react-three/drei'
 
 ### 3.3 - Configure
 
-1. Sharp shadows
-2. Soft shadows
-3. Accumulative shadows
-4. Contact shadows
+1. [Sharp shadows](https://github.com/ivanxavier7/react-three-fiber#5331---sharp-shadows)
+2. [Soft shadows](https://github.com/ivanxavier7/react-three-fiber#5332---soft-shadows)
+3. [Accumulative shadows](https://github.com/ivanxavier7/react-three-fiber#5333---accumulative-shadows)
+4. [Contact shadows](https://github.com/ivanxavier7/react-three-fiber#5334---contact-shadows)
 
 #### 3.3.1 - Sharp shadows
 
@@ -284,12 +284,13 @@ const { sunPosition } = useControls('sky',
 />
 ```
 
-
 ## 5 - Environments map
 
-1. Cube Map
-2. HDR Map
-3. Preset
+1. [Cube Map](https://github.com/ivanxavier7/react-three-fiber#551---cube-map)
+2. [HDR Map](https://github.com/ivanxavier7/react-three-fiber#552---hdr-map)
+3. [Preset](https://github.com/ivanxavier7/react-three-fiber#553---preset)
+4. [Custom](https://github.com/ivanxavier7/react-three-fiber#554---custom)
+5. [Custom Lights](https://github.com/ivanxavier7/react-three-fiber#555-custom-lights)
 
 
 ### 5.1 - Cube Map
@@ -359,7 +360,7 @@ Presets from Poly Haven
 />
 ```
 
-### 5.3 - Custom
+### 5.4 - Custom
 
 We can add geometries within the environment map
 
@@ -378,7 +379,7 @@ We can add geometries within the environment map
 </Environment>
 ```
 
-### 5.3 Custom Lights
+### 5.5 Custom Lights
 
 ``` javascript
 import { Lightformer, Environment } from '@react-three/drei'
@@ -394,12 +395,6 @@ import { Lightformer, Environment } from '@react-three/drei'
         form="ring"
     />
 </Environment>
-```
-
-### 5.4 Configure
-
-``` javascript
-
 ```
 
 ## 6 - Stage

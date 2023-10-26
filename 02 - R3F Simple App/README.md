@@ -6,13 +6,13 @@
 
 * [Performance tips](https://docs.pmnd.rs/react-three-fiber/advanced/scaling-performance#instancing)
 
-1. Setup
-2. Implementation
-3. Animate
-4. OrbitControls
-5. Lights
-6. Custom Geometry
-7. Canvas
+1. [Setup](https://github.com/ivanxavier7/react-three-fiber#21---setup)
+2. [Implementation](https://github.com/ivanxavier7/react-three-fiber#22---implementation)
+3. [Animate](https://github.com/ivanxavier7/react-three-fiber#23---animate)
+4. [OrbitControls](https://github.com/ivanxavier7/react-three-fiber#24---orbitcontrols)
+5. [Lights](https://github.com/ivanxavier7/react-three-fiber#25---lights)
+6. [Custom Geometry](https://github.com/ivanxavier7/react-three-fiber#26---custom-geometry)
+7. [Canvas](https://github.com/ivanxavier7/react-three-fiber#27---canvas)
 
 
 ## 1 - Setup
@@ -163,11 +163,11 @@ export default function CustomObject()
 
 ## 7 - Canvas
 
-1. Animating camera
-2. Antialias
-3. ToneMapping
-4. Encoding
-5. Pixel Ratio
+1. [Animating camera](https://github.com/ivanxavier7/react-three-fiber#271---animating-camera)
+2. [Antialias](https://github.com/ivanxavier7/react-three-fiber#272---antialias)
+3. [ToneMapping](https://github.com/ivanxavier7/react-three-fiber#273---tonemapping)
+4. [Encoding](https://github.com/ivanxavier7/react-three-fiber#274---encoding)
+5. [Pixel Ratio](https://github.com/ivanxavier7/react-three-fiber#275---pixel-ratio)
 
 The canvas configures the following for us:
 * `Scene`

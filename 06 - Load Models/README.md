@@ -1,11 +1,11 @@
 # Load Models
 
-1. Loader and Draco
-2. Loading Bigger Models
-3. Drei
-4. Multiple instances
-5. GLTF to Component
-6. Animations
+1. [Loader and Draco](https://github.com/ivanxavier7/react-three-fiber#61---loader-and-draco)
+2. [Loading Bigger Models](https://github.com/ivanxavier7/react-three-fiber#62---loading-bigger-models)
+3. [Drei](https://github.com/ivanxavier7/react-three-fiber#63---drei)
+4. [Multiple instances](https://github.com/ivanxavier7/react-three-fiber#64---multiple-instances)
+5. [GLTF to Component](https://github.com/ivanxavier7/react-three-fiber#65---gltf-component)
+6. [Animations](https://github.com/ivanxavier7/react-three-fiber#66---animations)
 
 
 ## 1 - Loader and Draco
@@ -117,8 +117,8 @@ import Placeholder from './Placeholder'
 
 ## 3 - Drei
 
-1. Loading
-2. Preloading
+1. [Loading](https://github.com/ivanxavier7/react-three-fiber#631---loading)
+2. [Preloading](https://github.com/ivanxavier7/react-three-fiber#632---preloading)
 
 
 ### 3.1 - Loading
@@ -171,7 +171,7 @@ useGLTF.preload('./hamburger-draco.glb')
 
 ## 4 - Multiple instances
 
-add multiple instances of the object using the same geometry using `Clone`.
+Add multiple instances of the object using the same geometry using `Clone`.
 
 ``` javascript
 import { Clone, useGLTF } from '@react-three/drei'
@@ -205,8 +205,8 @@ export default function Model()
 
 ## 5 - GLTF Component
 
-1. Convert
-2. Import and Shadow Acne
+1. [Convert](https://github.com/ivanxavier7/react-three-fiber#651---convert)
+2. [Import and Shadow Acne](https://github.com/ivanxavier7/react-three-fiber#652---import-and-shadow-acne)
 
 Converts a GLTF template to a React THREE Fiber component. We can tweak the menu before copying the result.
 
@@ -296,7 +296,7 @@ import Hamburger from './Hamburger'
 3. Control with GUI / Leva
 
 
-### 6.1 - Transitions
+### 6.1 - Load
 
 We use model animations with `useAnimations`.
 

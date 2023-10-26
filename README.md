@@ -7,6 +7,15 @@ React - Data binding- application react to the data (event triggering)
 * [React Three Fiber Repository](https://github.com/pmndrs/react-three-fiber)
 
 1. [React](https://github.com/ivanxavier7/react-three-fiber#1---react)
+    1. [Setup](https://github.com/ivanxavier7/react-three-fiber#11---setup)
+    2. [JSX](https://github.com/ivanxavier7/react-three-fiber#12---event-reacting)
+    3. [Conditional rendering](https://github.com/ivanxavier7/react-three-fiber#13---conditional-rendering)
+    4. [Properties](https://github.com/ivanxavier7/react-three-fiber#14---properties)
+    5. [Mapping cycle](https://github.com/ivanxavier7/react-three-fiber#15---mapping-cycle)
+    6. [Cache](https://github.com/ivanxavier7/react-three-fiber#16---cache)
+    7. [DOM](https://github.com/ivanxavier7/react-three-fiber#17---dom)
+    8. [People component](https://github.com/ivanxavier7/react-three-fiber#18---people-component)
+    9. [Fetch API](https://github.com/ivanxavier7/react-three-fiber#19---fetch-api)
 2. [R3F Simple Application](https://github.com/ivanxavier7/react-three-fiber#2---r3f-simple-application)
 3. [Drei](https://github.com/ivanxavier7/react-three-fiber#3---drei)
 4. [Debug](https://github.com/ivanxavier7/react-three-fiber#4---debug)
@@ -39,9 +48,9 @@ React - Data binding- application react to the data (event triggering)
 
 ## 1.1 - Setup
 
-1. NPX-Node
-2. Scratch
-3. Vite - Recommended
+1. [NPX-Node](https://github.com/ivanxavier7/react-three-fiber#111---npx)
+2. [Scratch](https://github.com/ivanxavier7/react-three-fiber#112---scratch)
+3. [Vite - Recommended](https://github.com/ivanxavier7/react-three-fiber#113---vite)
 
 ### 1.1.1 - NPX 
 
@@ -576,11 +585,11 @@ export default function CustomObject()
 
 ## 2.7 - Canvas
 
-1. Animating camera
-2. Antialias
-3. ToneMapping
-4. Encoding
-5. Pixel Ratio
+1. [Animating camera](https://github.com/ivanxavier7/react-three-fiber#271---animating-camera)
+2. [Antialias](https://github.com/ivanxavier7/react-three-fiber#272---antialias)
+3. [ToneMapping](https://github.com/ivanxavier7/react-three-fiber#273---tonemapping)
+4. [Encoding](https://github.com/ivanxavier7/react-three-fiber#274---encoding)
+5. [Pixel Ratio](https://github.com/ivanxavier7/react-three-fiber#275---pixel-ratio)
 
 The canvas configures the following for us:
 * `Scene`
@@ -734,8 +743,8 @@ export default function Experience()
 
 ## 3.3 - Geometries
 
-1. Transform Controls
-2. Pivot Controls
+1. [Transform Controls](https://github.com/ivanxavier7/react-three-fiber#331---transform-controls)
+2. [Pivot Controls](https://github.com/ivanxavier7/react-three-fiber#332---pivot-controls)
 
 ### 3.3.1 - Transform Controls
 
@@ -909,7 +918,6 @@ import { MeshReflectorMaterial } from '@react-three/drei'
 
 ## 4 - Debug
 
-
 Use React Developer Tools extension for the browser.
 
 1. [StrictMode](https://github.com/ivanxavier7/react-three-fiber#41---strictmode)
@@ -987,10 +995,10 @@ import { Perf } from 'r3f-perf'
 
 ## 5.1 - Background Color
 
-1. CSS
-2. Javascript
-3. Three.js
-4. React Three Fiber
+1. [CSS](https://github.com/ivanxavier7/react-three-fiber#51---background-color)
+2. [Javascript](https://github.com/ivanxavier7/react-three-fiber#512---javascript)
+3. [Three.js](https://github.com/ivanxavier7/react-three-fiber#513---threejs)
+4. [React Three Fiber](https://github.com/ivanxavier7/react-three-fiber#514---react-three-fiber)
 
 
 ### 5.1.1 - CSS
@@ -1035,8 +1043,8 @@ import * as THREE from 'three'
 
 ## 5.2 - Lights
 
-1. Light Helpers
-2. Types of lights
+1. [Light Helpers](https://github.com/ivanxavier7/react-three-fiber#521-light-helpers)
+2. [Types of lights](https://github.com/ivanxavier7/react-three-fiber#522-types-of-lights)
 
 
 ### 5.2.1. Light Helpers
@@ -1073,8 +1081,8 @@ useHelper(directionalLight, THREE.DirectionalLightHelper, 1)
 
 Realistic shadows have slightly bluer pigmentation, change the color accordingly
 
-1. Setup
-2. Baking
+1. [Setup](https://github.com/ivanxavier7/react-three-fiber#531---setup)
+2. [Baking](https://github.com/ivanxavier7/react-three-fiber#532---baking)
 
 ### 5.3.1 - Setup
 
@@ -1126,10 +1134,10 @@ import { BakeShadows } from '@react-three/drei'
 
 ### 5.3.3 - Configure
 
-1. Sharp shadows
-2. Soft shadows
-3. Accumulative shadows
-4. Contact shadows
+1. [Sharp shadows](https://github.com/ivanxavier7/react-three-fiber#5331---sharp-shadows)
+2. [Soft shadows](https://github.com/ivanxavier7/react-three-fiber#5332---soft-shadows)
+3. [Accumulative shadows](https://github.com/ivanxavier7/react-three-fiber#5333---accumulative-shadows)
+4. [Contact shadows](https://github.com/ivanxavier7/react-three-fiber#5334---contact-shadows)
 
 #### 5.3.3.1 - Sharp shadows
 
@@ -1264,12 +1272,11 @@ const { sunPosition } = useControls('sky',
 
 ## 5.5 - Environments map
 
-1. Cube Map
-2. HDR Map
-3. Preset
-4. Custom
-5. Custom Lights
-6. Configure
+1. [Cube Map](https://github.com/ivanxavier7/react-three-fiber#551---cube-map)
+2. [HDR Map](https://github.com/ivanxavier7/react-three-fiber#552---hdr-map)
+3. [Preset](https://github.com/ivanxavier7/react-three-fiber#553---preset)
+4. [Custom](https://github.com/ivanxavier7/react-three-fiber#554---custom)
+5. [Custom Lights](https://github.com/ivanxavier7/react-three-fiber#555-custom-lights)
 
 
 ### 5.5.1 - Cube Map
@@ -1374,12 +1381,6 @@ import { Lightformer, Environment } from '@react-three/drei'
         form="ring"
     />
 </Environment>
-```
-
-### 5.5.6 Configure
-
-``` javascript
-
 ```
 
 ## 5.6 - Stage
@@ -1547,8 +1548,8 @@ import Placeholder from './Placeholder'
 
 ## 6.3 - Drei
 
-1. Loading
-2. Preloading
+1. [Loading](https://github.com/ivanxavier7/react-three-fiber#631---loading)
+2. [Preloading](https://github.com/ivanxavier7/react-three-fiber#632---preloading)
 
 
 ### 6.3.1 - Loading
@@ -1601,7 +1602,7 @@ useGLTF.preload('./hamburger-draco.glb')
 
 ## 6.4 - Multiple instances
 
-add multiple instances of the object using the same geometry using `Clone`.
+Add multiple instances of the object using the same geometry using `Clone`.
 
 ``` javascript
 import { Clone, useGLTF } from '@react-three/drei'
@@ -1635,8 +1636,8 @@ export default function Model()
 
 ## 6.5 - GLTF Component
 
-1. Convert
-2. Import and Shadow Acne
+1. [Convert](https://github.com/ivanxavier7/react-three-fiber#651---convert)
+2. [Import and Shadow Acne](https://github.com/ivanxavier7/react-three-fiber#652---import-and-shadow-acne)
 
 Converts a GLTF template to a React THREE Fiber component. We can tweak the menu before copying the result.
 
@@ -1721,12 +1722,12 @@ import Hamburger from './Hamburger'
 
 ## 6.6 - Animations
 
-1. Load
-2. Transitions
-3. Control with GUI / Leva
+1. [Load]()
+2. [Transitions]()
+3. [Control with GUI / Leva]()
 
 
-### 6.6.1 - Transitions
+### 6.6.1 - Load
 
 We use model animations with `useAnimations`.
 

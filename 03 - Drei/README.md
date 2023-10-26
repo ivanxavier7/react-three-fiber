@@ -4,13 +4,13 @@
 
 Examples of some helpers using `Drei`
 
-1. Setup
-2. Camera Controls
-3. Geometries
-4. HTML
-5. 3D Text
-6. Float animation
-7. Materials
+1. [Setup](https://github.com/ivanxavier7/react-three-fiber#31---setup)
+2. [Camera Controls](https://github.com/ivanxavier7/react-three-fiber#32---camera-controls)
+3. [Geometries](https://github.com/ivanxavier7/react-three-fiber#33---geometries)
+4. [HTML](https://github.com/ivanxavier7/react-three-fiber#34---html)
+5. [3D Text](https://github.com/ivanxavier7/react-three-fiber#35---3d-text)
+6. [Float animation](https://github.com/ivanxavier7/react-three-fiber#36---float-animation)
+7. [Materials](https://github.com/ivanxavier7/react-three-fiber#37---materials)
 
 
 ## 1 - Setup
@@ -38,8 +38,8 @@ export default function Experience()
 
 ## 3 - Geometries
 
-1. Transform Controls
-2. Pivot Controls
+1. [Transform Controls](https://github.com/ivanxavier7/react-three-fiber#331---transform-controls)
+2. [Pivot Controls](https://github.com/ivanxavier7/react-three-fiber#332---pivot-controls)
 
 ### 3.1 - Transform Controls
 

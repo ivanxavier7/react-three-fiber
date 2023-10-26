@@ -15,9 +15,9 @@
 
 ## 1 - Setup
 
-1. NPX-Node
-2. Scratch
-3. Vite - Recommended
+1. [NPX-Node](https://github.com/ivanxavier7/react-three-fiber#111---npx)
+2. [Scratch](https://github.com/ivanxavier7/react-three-fiber#112---scratch)
+3. [Vite - Recommended](https://github.com/ivanxavier7/react-three-fiber#113---vite)
 
 ### 1.1 - NPX 
 
