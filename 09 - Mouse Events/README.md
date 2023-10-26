@@ -6,6 +6,8 @@
 4. Applications
 5. Occluding / Block Ray
 6. Cursor
+7. Model Events
+8. Performance
 
 ## 1 - Event Example
 
