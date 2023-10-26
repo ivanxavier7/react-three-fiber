@@ -152,27 +152,46 @@ React - Data binding- application react to the data (event triggering)
     3. [Shader Materials](https://github.com/ivanxavier7/react-three-fiber#83---shader-materials)
 
 
-9. [Mouse Events and Raycasting]()
+9. [Mouse Events and Raycasting](https://github.com/ivanxavier7/react-three-fiber#9---mouse-events-and-raycasting)
 
     1. [Event Example](https://github.com/ivanxavier7/react-three-fiber#91---event-example)
     2. [Event Information](https://github.com/ivanxavier7/react-three-fiber#92---event-information)
     3. [Types of Events](https://github.com/ivanxavier7/react-three-fiber#93---types-of-events)
+
+        1. [Click](https://github.com/ivanxavier7/react-three-fiber#931---click)
+        2. [Right Click](https://github.com/ivanxavier7/react-three-fiber#932---right-click)
+        3. [Double Click](https://github.com/ivanxavier7/react-three-fiber#933---double-click)
+        4. [Pointer Up](https://github.com/ivanxavier7/react-three-fiber#934---pointer-up)
+        5. [Pointer Down](https://github.com/ivanxavier7/react-three-fiber#935---pointer-down)
+        6. [Pointer Over](https://github.com/ivanxavier7/react-three-fiber#936---pointer-over)
+        7. [Pointer Enter](https://github.com/ivanxavier7/react-three-fiber#937---pointer-enter)
+        8. [Pointer Out](https://github.com/ivanxavier7/react-three-fiber#938---pointer-out)
+        9. [Pointer Leave](https://github.com/ivanxavier7/react-three-fiber#939---pointer-leave)
+        10. [Pointer Move](https://github.com/ivanxavier7/react-three-fiber#9310---pointer-move)
+        11. [Pointer Miss](https://github.com/ivanxavier7/react-three-fiber#9311---pointer-miss)
+
     4. [Applications](https://github.com/ivanxavier7/react-three-fiber#94---applications)
     5. [Occluding / Block Ray](https://github.com/ivanxavier7/react-three-fiber#95---occlusion--block-ray)
     6. [Cursor](https://github.com/ivanxavier7/react-three-fiber#96---cursor)
+
+        1. [Pointer / Finger](https://github.com/ivanxavier7/react-three-fiber#961---pointer--finger)
+        2. [Drei Helper - Recommended](https://github.com/ivanxavier7/react-three-fiber#962---drei-helper---recommended)
+
     7. [Model Events](https://github.com/ivanxavier7/react-three-fiber#97---model-events)
     8. [Performance](https://github.com/ivanxavier7/react-three-fiber#98---performance)
+
+        1. [Mesh Bounds / Geometries](https://github.com/ivanxavier7/react-three-fiber#981---mesh-bounds--geometries)
+        2. [BVH](https://github.com/ivanxavier7/react-three-fiber#982---bvh--models-or-scene)
 
 10. [Post-processing]()
 
 
-11. [Computer Scene]()
+11. [Physics]()
 
 
-12. [Physics]()
+12. [Projects]()
 
 
-13. [Simple Game]()
 
 ------
 
@@ -2468,17 +2487,17 @@ Information about the event associated with the click, we can see the objects th
 
 ## 9.3 - Types of Events
 
-1. [Click]()
-2. [Right Click]()
-3. [Double Click]()
-4. [Pointer Up]()
-5. [Pointer Down]()
-6. [Pointer Over]()
-7. [Pointer Enter]()
-8. [Pointer Out]()
-9. [Pointer Leave]()
-10. [Pointer Move]()
-11. [Pointer Miss]()
+1. [Click](https://github.com/ivanxavier7/react-three-fiber#931---click)
+2. [Right Click](https://github.com/ivanxavier7/react-three-fiber#932---right-click)
+3. [Double Click](https://github.com/ivanxavier7/react-three-fiber#933---double-click)
+4. [Pointer Up](https://github.com/ivanxavier7/react-three-fiber#934---pointer-up)
+5. [Pointer Down](https://github.com/ivanxavier7/react-three-fiber#935---pointer-down)
+6. [Pointer Over](https://github.com/ivanxavier7/react-three-fiber#936---pointer-over)
+7. [Pointer Enter](https://github.com/ivanxavier7/react-three-fiber#937---pointer-enter)
+8. [Pointer Out](https://github.com/ivanxavier7/react-three-fiber#938---pointer-out)
+9. [Pointer Leave](https://github.com/ivanxavier7/react-three-fiber#939---pointer-leave)
+10. [Pointer Move](https://github.com/ivanxavier7/react-three-fiber#9310---pointer-move)
+11. [Pointer Miss](https://github.com/ivanxavier7/react-three-fiber#9311---pointer-miss)
 
 ### 9.3.1 - Click
 
@@ -2715,8 +2734,8 @@ export default function Experience()
 
 ## 9.6 - Cursor
 
-1. Pointer / Finger
-2. Drei Helper - Recommended
+1. [Pointer / Finger](https://github.com/ivanxavier7/react-three-fiber#961---pointer--finger)
+2. [Drei Helper - Recommended](https://github.com/ivanxavier7/react-three-fiber#962---drei-helper---recommended)
 
 To help distinguish clickable objects, we can change the cursor to a pointing finger.
 
@@ -2814,8 +2833,8 @@ export default function Experience()
 
 ## 9.8 - Performance
 
-1. Mesh Bounds / Geometries
-2. BVH
+1. [Mesh Bounds / Geometries](https://github.com/ivanxavier7/react-three-fiber#981---mesh-bounds--geometries)
+2. [BVH](https://github.com/ivanxavier7/react-three-fiber#982---bvh--models-or-scene)
 
 
 ### 9.8.1 - Mesh Bounds / Geometries
@@ -2862,4 +2881,4 @@ import { Bvh } from '@react-three/drei'
 ------
 
 
-# 10
+# 10 - Post-processing
