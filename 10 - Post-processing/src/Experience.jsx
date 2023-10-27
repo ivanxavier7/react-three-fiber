@@ -6,10 +6,15 @@ import { useControls } from 'leva'
 
 import { GlitchMode, BlendFunction } from 'postprocessing'
 
+import Drunk from './Drunk'
+import { useRef } from 'react'
+
 //console.log(BlendFunction)
 
 export default function Experience()
 {
+    const drunkRef = useRef()
+
     {/*
     const ssrProps = useControls('SSR Effect', {
         temporalResolve: true,
@@ -43,6 +48,12 @@ export default function Experience()
     })
     */}
 
+    const drunkProps = useControls('Drunk Effect',
+    {
+        frequency: { value: 2, min: 1, max: 20},
+        amplitude: { value: 0.2, min:0, max: 1}
+    })
+
     return <>
         <color args={ [ '#ffffff' ] } attach="background" />
         <EffectComposer
@@ -54,7 +65,7 @@ export default function Experience()
                 darkness={ 0.9 }
                 blendFunction={ BlendFunction.NORMAL}
             />
-            */}
+
             {/*
             <Glitch
                 delay={ [ 0.5, 1 ] }
@@ -88,6 +99,13 @@ export default function Experience()
                 {...ssrProps}
             />
             */}
+
+            <Drunk
+                useRef={ drunkRef }
+                frequency={ drunkProps.frequency }
+                amplitude={ drunkProps.amplitude }
+                blendFunction={ BlendFunction.COLOR_BURN }
+            />
         </EffectComposer>
 
         <Perf position="top-left" />

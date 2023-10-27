@@ -1,5 +1,9 @@
 # Post-processing
 
+1. Setup
+2. Blending / Coloring
+3. Effects
+4. Custom Effect
 
 Post-processing
 
@@ -258,3 +262,123 @@ const ssrProps = useControls('SSR Effect', {
 ```
 
 ## 4 - Custom Effect
+
+[Custom Effect Post-processing](https://github.com/pmndrs/postprocessing/wiki/Custom-Effects)
+[Custom Effect React-Post-processing](https://github.com/pmndrs/react-postprocessing)
+
+Custom effect that animates, distorts the scene and changes its color.
+
+`BlendFunction()` and `useRef()` were configured to be an effect with the same options as those in EffectCompose, but they are not strictly necessary.
+
+
+* `const` - Static
+* `in` - Input
+* `out` - Output
+* `inout` - Both
+
+* `inputColor` - Input pixels
+* `uv` - Render coordinates
+* `outputColor` - Output pixels
+
+
+`DrunkEffect.jsx`
+``` javascript
+import { BlendFunction, Effect } from 'postprocessing'
+
+const fragmentShader = `
+    uniform float frequency;
+    uniform float amplitude;
+    uniform float offset;
+
+    void mainUv(inout vec2 uv)
+    {
+        uv.y += sin(uv.x * frequency + offset) * amplitude;
+    }
+
+    void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor)
+    {
+        vec4 color = inputColor;
+        color.rgb *= vec3(0.6, 1.0, 0.7);
+
+        outputColor = color;
+    }
+`
+
+export default class DrunkEffect extends Effect
+{
+    constructor({ frequency = 2, amplitude = 0.2, blendFunction = BlendFunction.NORMAL})
+    {
+        super(
+            'DrunkEffect',
+            fragmentShader,
+            {
+                uniforms: new Map([
+                    [ 'frequency', { value: frequency } ],
+                    [ 'amplitude', { value: amplitude } ],
+                    [ 'offset', { value: 0 } ],
+                ]),
+                blendFunction
+            }
+        )
+    }
+
+    update(renderer, inputBuffer, deltaTime)
+    {
+        this.uniforms.get('offset').value += deltaTime
+    }
+}
+```
+
+`Drunk.jsx`
+``` javascript
+import DrunkEffect from "./DrunkEffect"
+import { forwardRef } from "react"
+
+export default forwardRef(function Drunk(props, ref)
+{
+    const effect = new DrunkEffect(props)
+
+    return <primitive ref={ ref } object={ effect } />
+})
+```
+
+`Experience.jsx`
+``` javascript
+import { OrbitControls } from '@react-three/drei'
+import { Perf } from 'r3f-perf'
+import { EffectComposer } from '@react-three/postprocessing'
+
+import { useControls } from 'leva'
+
+import { BlendFunction } from 'postprocessing'
+
+import Drunk from './Drunk'
+import { useRef } from 'react'
+
+export default function Experience()
+{
+    const drunkRef = useRef()
+
+    const drunkProps = useControls('Drunk Effect',
+    {
+        frequency: { value: 2, min: 1, max: 20},
+        amplitude: { value: 0.2, min:0, max: 1}
+    })
+
+    return <>
+        <color args={ [ '#ffffff' ] } attach="background" />
+        <EffectComposer
+            multisampling={ 0 }
+        >
+            <Drunk
+                useRef={ drunkRef }
+                frequency={ drunkProps.frequency }
+                amplitude={ drunkProps.amplitude }
+                blendFunction={ BlendFunction.COLOR_BURN }
+            />
+        </EffectComposer>
+
+        <Perf position="top-left" />
+    </>
+}
+```
