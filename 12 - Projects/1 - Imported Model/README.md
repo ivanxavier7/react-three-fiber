@@ -391,10 +391,79 @@ export default function FloatingClouds()
 }
 ```
 
-## 6 - Presentation Controls / Camera
+## 6 - Presentation Controls
+
+1. Object
+2. Camera
+
+### 6.1 - Object
+
+Adds controls to move the object, the configuration created allows it to return to the initial position whenever the user releases the object and resumes its position with an animation of several jumps.
 
 `PresentationControls`
 
 ``` javascript
 
 ```
+
+## 6.2 - Camera
+
+Animate the camera in the scene.
+
+``` javascript
+import { PresentationControls } from '@react-three/drei'
+
+import MacBook from './MacBook'
+
+<PresentationControls
+    global
+    polar={ [ -4, 0.2 ]}
+    azimuth={ [ -1, 0.75 ] }
+    config={ { mass: 2, tension: 400 } }
+    snap={ { mass: 4, tension: 400 } }
+>
+    <MacBook 
+        position-y={ -1 }
+        position-x={ 0.4 }
+    />
+</PresentationControls>
+```
+
+# 7 - Shadows
+
+It was not implemented in this project due to it being above the clouds, but it can be easily integrated this way.
+
+If we want the shadow to follow the object we must place it inside that object.
+
+``` javascript
+import { ContactShadows } from '@react-three/drei'
+
+<ContactShadows
+    position-y={ -1.4 }
+    opacity={ 0.4 }
+    scale={ 5 }
+    blur={ 2.4 }
+/>
+```
+
+# 8 - Iframe
+
+1. Create HTML/CSS document
+2. Integrate in the Model
+
+Associates an Iframe in a plane, An inline frame is used to embed another document within the current HTML document.
+
+
+## 8.1 - Create HTML/CSS document
+
+``` html
+
+```
+
+
+## 8.2 - Integrate in the Model
+
+``` html
+
+```
+

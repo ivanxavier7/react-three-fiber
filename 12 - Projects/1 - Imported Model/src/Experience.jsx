@@ -1,4 +1,4 @@
-import { Environment, Lightformer, OrbitControls } from '@react-three/drei'
+import { PresentationControls, Environment } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 
 import MacBook from './MacBook'
@@ -27,15 +27,20 @@ export default function Experience()
                 scale={ 2 }
                 speed={ 0.4 }
             />
-
         </Environment>
-
-        <OrbitControls makeDefault />
         
-        <MacBook 
-            position-y={ -1 }
-            position-x={ 0.4 }
-        />
+        <PresentationControls
+            global
+            polar={ [ -4, 0.2 ]}
+            azimuth={ [ -1, 0.75 ] }
+            config={ { mass: 2, tension: 400 } }
+            snap={ { mass: 4, tension: 400 } }
+        >
+            <MacBook 
+                position-y={ -1 }
+                position-x={ 0.4 }
+            />
+        </PresentationControls>
 
         <FloatingClouds />
     </>
