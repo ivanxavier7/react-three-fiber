@@ -6,8 +6,9 @@
 4. Animated Environment Map
 5. Floating Clouds
 6. Presentation Controls / Camera
-7. 
-8. 
+7. Shadows
+8. Lights
+9. Iframe
 
 The model can be created using blender.
 
