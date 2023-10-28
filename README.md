@@ -1804,8 +1804,9 @@ export default function Model()
 
 Converts a GLTF template to a React THREE Fiber component. We can tweak the menu before copying the result.
 
-[Converter script](https://github.com/pmndrs/gltfjsx)
-[Online converter](https://gltf.pmnd.rs/)
+* [Converter script](https://github.com/pmndrs/gltfjsx)
+
+* [Online converter](https://gltf.pmnd.rs/)
 
 Create a component with the name of the model and copy the result into the file.
  * Add the dot `./hamburger-draco.glb`
@@ -1822,7 +1823,7 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 
-export default function Model(props)
+export default function Hamburger(props)
 {
     const { nodes, materials } = useGLTF("./hamburger-draco.glb");
     return (
