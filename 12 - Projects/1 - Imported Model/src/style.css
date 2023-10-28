@@ -13,3 +13,12 @@ body,
 canvas{
     touch-action: none; /* Fix mobile touch slide */
 }
+
+.htmlScreen iframe
+{
+    width: 1890px;
+    height: 1220px;
+    border: none;
+    border-radius: 20px;
+    background: black;
+}

@@ -406,7 +406,7 @@ Adds controls to move the object, the configuration created allows it to return 
 
 ```
 
-## 6.2 - Camera
+### 6.2 - Camera
 
 Animate the camera in the scene.
 
@@ -429,7 +429,7 @@ import MacBook from './MacBook'
 </PresentationControls>
 ```
 
-# 7 - Shadows
+## 7 - Shadows
 
 It was not implemented in this project due to it being above the clouds, but it can be easily integrated this way.
 
@@ -446,24 +446,77 @@ import { ContactShadows } from '@react-three/drei'
 />
 ```
 
-# 8 - Iframe
+## 8 - Lights
 
-1. Create HTML/CSS document
-2. Integrate in the Model
+Add a area light to simulate the screen
 
-Associates an Iframe in a plane, An inline frame is used to embed another document within the current HTML document.
-
-
-## 8.1 - Create HTML/CSS document
-
-``` html
-
+``` javascript
+<rectAreaLight
+    width={ 2.5 }
+    height={ 1.65 }
+    intensity={ 5 }
+    color={ '#a0aff0'}
+    position={ [ 0, 0.95, 0.75 ] }
+    rotation-x={ -0.50 }
+/>
 ```
 
+## 9 - Iframe
 
-## 8.2 - Integrate in the Model
+Associates an HTML page in a plane, An inline frame is used to embed another document within the current HTML document.
 
-``` html
+Use this [converter](https://gero3.github.io/facetype.js/) to convert [Google Fonts](https://fonts.google.com/) in typeface.json.
 
+Put this inside the object
+``` javascript
+<Html
+    transform
+    wrapperClass="htmlScreen"
+    distanceFactor={ 0.63 }
+    position={ [ 0, 1.55, -1.4 ] }
+    rotation-x={ -0.256 }
+>
+    <iframe src="./Iframe/index.html"/>
+</Html>
+```
+
+``` javascript
+<Text3D
+    font="./resources/Fonts/Permanent Marker_Regular.json"
+    size={ 0.5 }
+    position={ [ 4.5, 0.60, -2.95 ]}
+    rotation-y={ -1.25 }
+    scale-x={ 1.5 }
+    scale-y={1}
+    scale-z={1}
+    letterSpacing={ 0.02}
+>
+    Ivan
+    <meshMatcapMaterial matcap={ matCapTexture } />
+</Text3D>
+<Text3D
+    font="./resources/Fonts/Permanent Marker_Regular.json"
+    size={ 0.5 }
+    position={ [ 4.5, 0, -3.61 ]}
+    rotation-y={ -1.25 }
+    scale-x={ 1.4 }
+    scale-y={1}
+    scale-z={0.8}
+    letterSpacing={ 0.02}
+>
+    Xavier
+    <meshMatcapMaterial matcap={ matCapTexture } />
+</Text3D>
+```
+
+``` css
+.htmlScreen iframe
+{
+    width: 1890px;
+    height: 1220px;
+    border: none;
+    border-radius: 20px;
+    background: black;
+}
 ```
 

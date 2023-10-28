@@ -1,12 +1,10 @@
-import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import React from "react";
+import { Html, useGLTF } from "@react-three/drei";
 
 
 export default function MacBook(props)
 {
     const { nodes, materials } = useGLTF("./macbook.gltf");
-
-    const model = useGLTF("./macbook.gltf");
 
     return (
         <group {...props} dispose={null}>
@@ -209,6 +207,17 @@ export default function MacBook(props)
                 </group>
                 
             </group>
+
+            <Html
+                transform
+                wrapperClass="htmlScreen"
+                distanceFactor={ 0.63 }
+                position={ [ 0, 1.55, -1.4 ] }
+                rotation-x={ -0.256 }
+            >
+                <iframe src="./Iframe/index.html"/>
+            </Html>
+
         </group>
     );
 }
