@@ -1,15 +1,53 @@
 import { useGLTF, OrbitControls } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
-import { CylinderCollider, RigidBody, Physics, CuboidCollider } from '@react-three/rapier'
+import { CylinderCollider, RigidBody, Physics, CuboidCollider, InstancedRigidBodies } from '@react-three/rapier'
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { useState } from 'react'
+import { useMemo, useEffect } from 'react'
 
 export default function Experience()
 {
     const sphere = useRef()
     const twister = useRef()
+
+    const objectCount = 1000
+    const multipleObjectsRef = useRef()
+
+    useEffect(() =>
+    {
+        for(let i = 0; i < objectCount; i++) 
+        {
+            const matrix = new THREE.Matrix4()
+            matrix.compose(
+                new THREE.Vector3(i * 2, 0, 0),
+                new THREE.Quaternion(),
+                new THREE.Vector3(1, 1, 1)
+            )
+            multipleObjectsRef.current.setMatrixAt(i, matrix)
+        }
+    }, [])
+
+    const instances = useMemo(() =>
+    {
+        const instances = []
+
+        for(let i = 0; i < objectCount; i++)
+        {
+            instances.push({
+                key: 'instance_' + i,
+                position: [
+                   (Math.random() - 0.5) * 8,
+                    6 + 1 * 0.2,
+                    (Math.random() - 0.5) * 8
+                ],
+                rotation: [ Math.random(), Math.random(), Math.random()]
+            })
+        }
+
+        return instances
+    }, [])
 
     const hamburger = useGLTF('./hamburger.glb')
 
@@ -65,7 +103,7 @@ export default function Experience()
         <color args={ [ '#0e0e0e' ] }  attach="background"/>
 
         <Physics
-            debug
+            
             gravity={ [0, -1.6, 0 ] }
         >
             <RigidBody
@@ -148,6 +186,25 @@ export default function Experience()
                     <meshStandardMaterial color="#1f581f" />
                 </mesh>
             </RigidBody>
+            <RigidBody
+                type="fixed"
+            >
+                <CuboidCollider args={ [ 10, 6, 0.5 ] } position={ [ 0, 5, 10.25] }/>
+                <CuboidCollider args={ [ 10, 6, 0.5 ] } position={ [ 0, 5, -10.25] }/>
+                <CuboidCollider args={ [ 0.5, 6, 10 ] } position={ [ -10.25, 5, 0] }/>
+                <CuboidCollider args={ [ 0.5, 6, 10 ] } position={ [ 10.25, 5, 0] }/>
+            </RigidBody>
+            <InstancedRigidBodies instances={ instances }>
+                <instancedMesh
+                    ref={ multipleObjectsRef }
+                    args={ [ null, null, objectCount]}
+                    castShadow
+                    receiveShadow
+                >
+                    <boxGeometry />
+                    <meshStandardMaterial color='#5a0808' />
+                </instancedMesh>
+            </InstancedRigidBodies>
             <RigidBody
                 ref={ twister }
                 friction={ 0 }

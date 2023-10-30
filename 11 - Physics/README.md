@@ -5,7 +5,7 @@
 3. Physical Object
 4. Events
 5. Models
-6. Performance
+6. Stress test and Invisible walls
 
 `Rapier`
 
@@ -315,6 +315,10 @@ The best option is to use multiple `custom colliders`.
 
 In the case of the hamburger, you should use a capsule with a cube simulating cheese, it will be more efficient than using Hull or trimesh and will have similar results.
 
+Check `Joints` from Rapier to attach objects like a robot.
+
+[Joint Documentation](https://rapier.rs/docs/user_guides/javascript/joints/)
+
 ``` javascript
 import { useGLTF } from '@react-three/drei'
 import { CylinderCollider } from '@react-three/rapier'
@@ -334,8 +338,75 @@ import { CylinderCollider } from '@react-three/rapier'
 </RigidBody>
 ```
 
-## 7 -  Performance
+## 7 -  Stress test and Invisible walls
+
+`<instanceMesh>` helps create thousands of object instances if necessary with a draw call, excellent for performance.
+
+Invisible walls and many objects to consume a lot of resources and how best to deal with it.
+
+To create invisible objects we just need to create collision objects without associated geometries.
+
+
+To set up colliders in multiple objects we need to wrap `<instanceMesh>`  inside `<InstancedRigidBodies>`  
 
 ``` javascript
+import { CuboidCollider, InstancedRigidBodies } from '@react-three/rapier'
+import { useMemo, useEffect } from 'react'
 
+const objectCount = 1000
+const multipleObjectsRef = useRef()
+
+useEffect(() =>
+{
+    for(let i = 0; i < objectCount; i++) 
+    {
+        const matrix = new THREE.Matrix4()
+        matrix.compose(
+            new THREE.Vector3(i * 2, 0, 0),
+            new THREE.Quaternion(),
+            new THREE.Vector3(1, 1, 1)
+        )
+        multipleObjectsRef.current.setMatrixAt(i, matrix)
+    }
+}, [])
+
+const instances = useMemo(() =>
+{
+    const instances = []
+
+    for(let i = 0; i < objectCount; i++)
+    {
+        instances.push({
+            key: 'instance_' + i,
+            position: [
+                (Math.random() - 0.5) * 8,
+                6 + 1 * 0.2,
+                (Math.random() - 0.5) * 8
+            ],
+            rotation: [ Math.random(), Math.random(), Math.random()]
+        })
+    }
+
+    return instances
+}, [])
+
+<RigidBody
+    type="fixed"
+>
+    <CuboidCollider args={ [ 10, 6, 0.5 ] } position={ [ 0, 5, 10.25] }/>
+    <CuboidCollider args={ [ 10, 6, 0.5 ] } position={ [ 0, 5, -10.25] }/>
+    <CuboidCollider args={ [ 0.5, 6, 10 ] } position={ [ -10.25, 5, 0] }/>
+    <CuboidCollider args={ [ 0.5, 6, 10 ] } position={ [ 10.25, 5, 0] }/>
+</RigidBody>
+<InstancedRigidBodies instances={ instances }>
+    <instancedMesh
+        ref={ multipleObjectsRef }
+        args={ [ null, null, objectCount]}
+        castShadow
+        receiveShadow
+    >
+        <boxGeometry />
+        <meshStandardMaterial color='#5a0808' />
+    </instancedMesh>
+</InstancedRigidBodies>
 ```
