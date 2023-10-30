@@ -4,6 +4,7 @@ import { RigidBody, Physics, CuboidCollider } from '@react-three/rapier'
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
+import { useState } from 'react'
 
 export default function Experience()
 {
@@ -21,6 +22,15 @@ export default function Experience()
 
         // Accessing Collision properties
         //console.log(sphere.current.mass()) 
+    }
+
+    const [ hitSound ] = useState( () => new Audio('./hit.mp3') )
+
+    const collisionEnter = () =>
+    {
+        hitSound.currentTime = 0
+        hitSound.volume = Math.random()
+        hitSound.play()
     }
 
     useFrame((state) =>
@@ -126,6 +136,7 @@ export default function Experience()
                 ref={ twister }
                 friction={ 0 }
                 type='kinematicPosition'
+                onCollisionEnter={ collisionEnter }
             >
                 <mesh
                     castShadow

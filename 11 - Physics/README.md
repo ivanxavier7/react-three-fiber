@@ -3,8 +3,9 @@
 1. Create World and Colliders
 2. Access the Body and Forces
 3. Physical Object
-4. Models
-5. Performance
+4. Events
+5. Models
+6. Performance
 
 `Rapier`
 
@@ -273,12 +274,40 @@ useFrame((state) =>
 * `onWake` - Stop sleeping
 
 
-``` javascript
+When the object hits something it makes a `Sound`
 
+``` javascript
+const [ hitSound ] = useState( () => new Audio('./hit.mp3') )
+
+const collisionEnter = () =>
+{
+    hitSound.currentTime = 0
+    hitSound.volume = Math.random()
+    hitSound.play()
+}
+
+<Physics
+    debug
+    gravity={ [0, -1.6, 0 ] }
+>
+    <RigidBody
+        onCollisionEnter={ collisionEnter }
+    >
+        <mesh
+            castShadow
+            scale={ [ 0.4, 0.4, 6] }
+        >
+            <boxGeometry />
+            <meshStandardMaterial color="#6a6b13" />
+        </mesh>
+    </RigidBody>
+</Physics>
 ```
 
 
 ## 6 -  Models
+
+We must simplify the model collider as much as possible.
 
 ``` javascript
 
