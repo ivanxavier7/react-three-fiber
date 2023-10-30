@@ -2,7 +2,7 @@
 
 1. Create World and Colliders
 2. Access the Body and Forces
-3. Events
+3. Physical Object
 4. Models
 5. Performance
 
@@ -14,6 +14,7 @@
 [More examples](https://docs.pmnd.rs/react-three-fiber/getting-started/examples)
 
 We must use thick plans to facilitate calculations, plans with minimum thickness create problems.
+
 
 ## 1 - Create World and Colliders
 
@@ -28,6 +29,8 @@ Default Colliders:
 * trimesh - avoid, for holes inside objects like donuts or terrain
 * custom - its scalable for complex models
 
+Don't change their position after attaching them to the object.
+If needed, use this method to reset your position without speed.
 
 Custom colliders references:
 * [Ball](https://rapier.rs/javascript3d/classes/Ball.html)
@@ -109,6 +112,7 @@ import { RigidBody, Physics, CuboidCollider } from '@react-three/rapier'
 </Physics>
 ```
 
+
 ## 2 -  Access the Body and Forces
 
 Push
@@ -149,4 +153,75 @@ const sphereJump = () =>
         </mesh>
     </RigidBody>
 </Physics>
+```
+
+
+## 3 -  Physical Object
+
+* Friction: Default is `0.7`
+* Restitution / Bounciness: default is `0`
+* Mass: Impact the collisions, needs a `Custom Collider` to modify
+* Gravity: `-9.81` is the default (Hearth gravity), Moon is `-1.6`
+* Gravity Scale: Change the gravity of the object
+
+``` javascript
+const sphere = useRef()
+
+const sphereJump = () =>
+{
+    // Accessing Collision properties
+    console.log(sphere.current.mass()) 
+}
+
+<Physics
+    debug
+    gravity={ [0, -1.6, 0 ] }
+>
+    <RigidBody
+        ref={ sphere }
+        colliders={ false }
+        gravityScale={ 10 }
+        restitution={ 3 }
+        mass={ 10 }
+    >
+        <CuboidCollider
+            position={ [ - 2, 1, 0 ] }
+            rotation={ [Math.PI * 0.45, 0, 0] }
+            args={ [ 1, 1, 0.5] }
+        />
+        <mesh
+            castShadow
+            position={ [ - 2, 1, 0 ] }
+            rotation-x={ Math.PI * 0.45}
+            onClick={ sphereJump }
+        >
+            <torusGeometry />
+            <meshStandardMaterial color="#1e749c" />
+        </mesh>
+    </RigidBody>
+    <RigidBody
+        type="fixed"
+        friction={ 0.7 }
+    >
+        <mesh receiveShadow position-y={ - 1.25 }>
+            <boxGeometry args={ [ 10, 0.5, 10 ] } />
+            <meshStandardMaterial color="#1f581f" />
+        </mesh>
+    </RigidBody>
+</Physics>
+```
+
+
+## 4 -  Animate
+
+For cases where it is necessary to animate an object with a specific speed, such as an obstacle.
+
+It can be used to simulate a player moving at a specific speed and colliding with objects.
+
+
+* `kinematicPosition` - Next position to move
+* `kinematicVelocity` - Speed of the object
+
+``` javascript
+
 ```

@@ -15,6 +15,9 @@ export default function Experience()
             y: Math.random() - 0.5,
             z: Math.random() - 0.5
         })
+
+        // Accessing Collision properties
+        //console.log(sphere.current.mass()) 
     }
 
     return <>
@@ -30,10 +33,13 @@ export default function Experience()
 
         <Physics
             debug
+            gravity={ [0, -1.6, 0 ] }
         >
             <RigidBody
                 ref={ sphere }
                 colliders="ball"
+                restitution={ 3 }
+                mass={ 10 }
             >
                 <mesh
                     castShadow
@@ -46,6 +52,7 @@ export default function Experience()
             </RigidBody>
             <RigidBody
                 colliders={ false }
+                gravityScale={ 10 }
             >
                 <CuboidCollider
                     position={ [ - 2, 1, 0 ] }
@@ -73,23 +80,26 @@ export default function Experience()
                 </mesh>
             </RigidBody>
             <RigidBody>
-            <mesh
-                castShadow position={ [ 2, 2, 0 ] }
-                scale={ [0.2, 3, 3] }
-            >
-                <boxGeometry />
-                <meshStandardMaterial color="#685811" />
-            </mesh>
-            <mesh castShadow position={ [ 4, 2, 0 ] }>
-                <boxGeometry />
-                <meshStandardMaterial color="#d163d1" />
-            </mesh>
+                <mesh
+                    castShadow position={ [ 2, 2, 0 ] }
+                    scale={ [0.2, 3, 3] }
+                >
+                    <boxGeometry />
+                    <meshStandardMaterial color="#685811" />
+                </mesh>
+                <mesh castShadow position={ [ 4, 2, 0 ] }>
+                    <boxGeometry />
+                    <meshStandardMaterial color="#d163d1" />
+                </mesh>
             </RigidBody>
-            <RigidBody type="fixed">
-            <mesh receiveShadow position-y={ - 1.25 }>
-                <boxGeometry args={ [ 10, 0.5, 10 ] } />
-                <meshStandardMaterial color="#1f581f" />
-            </mesh>
+            <RigidBody
+                type="fixed"
+                friction={ 0.7 }
+            >
+                <mesh receiveShadow position-y={ - 1.25 }>
+                    <boxGeometry args={ [ 10, 0.5, 10 ] } />
+                    <meshStandardMaterial color="#1f581f" />
+                </mesh>
             </RigidBody>
         </Physics>
     </>
