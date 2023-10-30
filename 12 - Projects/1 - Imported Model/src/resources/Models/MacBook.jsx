@@ -1,14 +1,14 @@
 import React from "react";
 import { Html, useGLTF } from "@react-three/drei";
 
-
 export default function MacBook(props)
 {
     const { nodes, materials } = useGLTF("./macbook.gltf");
 
     return (
-        <group {...props} dispose={null}>
-
+        <group {...props}
+            dispose={null}
+            >
               <group position={[0, 0.519, 0]} scale={0.103}>
                   <mesh
                       castShadow
@@ -220,6 +220,6 @@ export default function MacBook(props)
 
         </group>
     );
-}
+};
 
 useGLTF.preload("./macbook.gltf");

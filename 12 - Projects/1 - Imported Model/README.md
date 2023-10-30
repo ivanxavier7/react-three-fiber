@@ -9,6 +9,7 @@
 7. Shadows
 8. Lights
 9. Iframe
+10. Camera Rollercoaster
 
 The model can be created using blender.
 
@@ -521,3 +522,4 @@ Put this inside the object
 }
 ```
 
+## 10 - Camera Rollercoaster
