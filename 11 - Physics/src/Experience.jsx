@@ -1,6 +1,6 @@
-import { OrbitControls } from '@react-three/drei'
+import { useGLTF, OrbitControls } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
-import { RigidBody, Physics, CuboidCollider } from '@react-three/rapier'
+import { CylinderCollider, RigidBody, Physics, CuboidCollider } from '@react-three/rapier'
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
@@ -10,6 +10,8 @@ export default function Experience()
 {
     const sphere = useRef()
     const twister = useRef()
+
+    const hamburger = useGLTF('./hamburger.glb')
 
     const sphereJump = () =>
     {
@@ -66,6 +68,20 @@ export default function Experience()
             debug
             gravity={ [0, -1.6, 0 ] }
         >
+            <RigidBody
+                colliders={ false }
+            >
+                <CylinderCollider
+                    position={ [ 8, 4, 4 ]}
+                    args={[ 0.52, 1.25 ]}
+                />
+                <primitive
+                    object={hamburger.scene}
+                    scale={ 0.25 }
+                    position={ [ 8, 4, 4 ]}
+                />
+            </RigidBody>
+
             <RigidBody
                 ref={ sphere }
                 colliders="ball"

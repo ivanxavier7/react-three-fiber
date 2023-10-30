@@ -307,7 +307,34 @@ const collisionEnter = () =>
 
 ## 6 -  Models
 
-We must simplify the model collider as much as possible.
+We must simplify the model collider as much as possible, for better performance.
+
+For better realist with easy implementation, use `hull` or `trimesh` colliders.
+
+The best option is to use multiple `custom colliders`.
+
+In the case of the hamburger, you should use a capsule with a cube simulating cheese, it will be more efficient than using Hull or trimesh and will have similar results.
+
+``` javascript
+import { useGLTF } from '@react-three/drei'
+import { CylinderCollider } from '@react-three/rapier'
+
+<RigidBody
+    colliders={ false }
+>
+    <CylinderCollider
+        position={ [ 8, 4, 4 ]}
+        args={[ 0.52, 1.25 ]}
+    />
+    <primitive
+        object={hamburger.scene}
+        scale={ 0.25 }
+        position={ [ 8, 4, 4 ]}
+    />
+</RigidBody>
+```
+
+## 7 -  Performance
 
 ``` javascript
 
