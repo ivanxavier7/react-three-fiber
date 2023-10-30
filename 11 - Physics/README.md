@@ -123,6 +123,8 @@ Rotate
 * `addTorque`
 * `applyTorqueImpulse`
 
+When objects are stationary, they start sleeping(`5 - Events`)
+
 ``` javascript 
 const sphere = useRef()
 
@@ -221,6 +223,62 @@ It can be used to simulate a player moving at a specific speed and colliding wit
 
 * `kinematicPosition` - Next position to move
 * `kinematicVelocity` - Speed of the object
+
+``` javascript
+import { useRef } from 'react'
+import { useFrame } from '@react-three/fiber'
+import * as THREE from 'three'
+
+const twister = useRef()
+
+useFrame((state) =>
+{
+    const time = state.clock.getElapsedTime()
+    //console.log(time)
+
+    // Rotate
+    const eulerRotation = new THREE.Euler(0.2, time * 3, 0)
+    const quaternionRotation = new THREE.Quaternion()
+    quaternionRotation.setFromEuler(eulerRotation)
+    twister.current.setNextKinematicRotation(quaternionRotation)
+
+    // Go around
+    const angle = time * 0.5
+    const x = Math.cos(angle) * 5
+    const z = Math.sin(angle) * 5
+    twister.current.setNextKinematicTranslation( { x: x, y: 0, z: z } )
+})
+
+<RigidBody
+    ref={ twister }
+    friction={ 0 }
+    type='kinematicPosition'
+>
+    <mesh
+        castShadow
+        scale={ [ 0.4, 0.4, 6] }
+    >
+        <boxGeometry />
+        <meshStandardMaterial color="#6a6b13" />
+    </mesh>
+</RigidBody>
+```
+
+
+## 5 -  Events
+
+* `OnCollisionEnter` - Hit something
+* `OnCollisionExit` - Sperate from the hit object
+* `OnSleep` - Start sleeping
+* `onWake` - Stop sleeping
+
+
+``` javascript
+
+```
+
+
+## 6 -  Models
 
 ``` javascript
 
