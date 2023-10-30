@@ -523,3 +523,11 @@ Put this inside the object
 ```
 
 ## 10 - Camera Rollercoaster
+
+
+* [Check This before implementation](https://medium.com/@zmommaerts/animate-a-camera-in-react-three-fiber-7398326dad5d)
+* [Motion Path Controls](https://codesandbox.io/s/2y73c6)
+* [Stack Overflow](https://stackoverflow.com/questions/75562296/how-do-you-animate-the-camera-with-react-three-fiber)
+* [Medium Animation](https://blog.promaton.com/camera-animations-with-r3f-and-react-spring-6fd378296c46)
+
+* And improve Iframe page.
