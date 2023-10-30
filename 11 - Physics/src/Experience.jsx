@@ -1,9 +1,22 @@
 import { OrbitControls } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 import { RigidBody, Physics, CuboidCollider } from '@react-three/rapier'
+import { useRef } from 'react'
 
 export default function Experience()
 {
+    const sphere = useRef()
+
+    const sphereJump = () =>
+    {
+        sphere.current.applyImpulse({ x: 0, y: 5, z: 0})
+        sphere.current.applyTorqueImpulse({
+            x: Math.random() - 0.5,
+            y: Math.random() - 0.5,
+            z: Math.random() - 0.5
+        })
+    }
+
     return <>
 
         <Perf position="top-left" />
@@ -19,9 +32,14 @@ export default function Experience()
             debug
         >
             <RigidBody
+                ref={ sphere }
                 colliders="ball"
             >
-                <mesh castShadow position={ [ - 2, 4.5, 0 ] }>
+                <mesh
+                    castShadow
+                    position={ [ - 2, 4.5, 0 ] }
+                    onClick={ sphereJump }
+                >
                     <sphereGeometry />
                     <meshStandardMaterial color="#9c571e" />
                 </mesh>

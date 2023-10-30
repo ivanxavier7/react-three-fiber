@@ -21,7 +21,7 @@ We must use thick plans to facilitate calculations, plans with minimum thickness
 * `<RigidBody>` - Defines the object as physical, we can put different meshes and will act as one object
 * Colliders - Shape of the rigid body, use `debug` to see them.
 
-Colliders:
+Default Colliders:
 * ball
 * cuboid
 * hull
@@ -111,8 +111,42 @@ import { RigidBody, Physics, CuboidCollider } from '@react-three/rapier'
 
 ## 2 -  Access the Body and Forces
 
+Push
+* `addForce` - Continuous force like Wind
+* `addImpulse` - Impulse force for a very short time, projectile
 
+Rotate
+* `addTorque`
+* `applyTorqueImpulse`
 
 ``` javascript 
+const sphere = useRef()
 
+const sphereJump = () =>
+{
+    sphere.current.applyImpulse({ x: 0, y: 5, z: 0})
+    sphere.current.applyTorqueImpulse({
+        x: Math.random() - 0.5,
+        y: Math.random() - 0.5,
+        z: Math.random() - 0.5
+    })
+}
+
+<Physics
+    debug
+>
+    <RigidBody
+        ref={ sphere }
+        colliders="ball"
+    >
+        <mesh
+            castShadow
+            position={ [ - 2, 4.5, 0 ] }
+            onClick={ sphereJump }
+        >
+            <sphereGeometry />
+            <meshStandardMaterial color="#9c571e" />
+        </mesh>
+    </RigidBody>
+</Physics>
 ```
