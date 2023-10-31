@@ -1,12 +1,13 @@
 import { useKeyboardControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { RigidBody } from "@react-three/rapier";
-import { useRef } from "react";
+import { useRapier, RigidBody } from "@react-three/rapier";
+import { useEffect, useRef } from "react";
 
 export default function Player()
 {
     const body = useRef()
     const [ subscribeKeys, getKeys ] = useKeyboardControls()
+    const { rapier, world } = useRapier()
 
     useFrame((state, delta) =>
     {
@@ -48,6 +49,40 @@ export default function Player()
         body.current.applyTorqueImpulse(torque)
 
     })
+
+    const jump = () =>
+    {
+        const origin = body.current.translation()
+        origin.y -= 0.31
+        // Cast a ray to see if the ball is close to the ground to jump again
+        const direction = { x: 0, y: -1, z: 0 }
+        const ray = new rapier.Ray(origin, direction)
+        const hit = world.castRay(ray, 10, true)
+
+        if(hit.toi < 0.15)
+        {
+            body.current.applyImpulse({ x: 0, y: 0.5, z: 0 })
+        }
+    }
+
+    useEffect(() =>
+    {
+        subscribeKeys(
+            (state) =>
+            {
+                return state.jump
+            },
+            (value) =>
+            {
+                //console.log(value)
+                if(value)
+                {
+                    jump()
+                }
+            }
+        )
+    }, [])
+    
 
     return <RigidBody
         ref={ body }
