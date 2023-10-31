@@ -3,6 +3,7 @@ import { Physics } from '@react-three/rapier'
 
 import Lights from './Lights.jsx'
 import { Level, BlockLimbo, BlockAxe, BlockSpinner } from './Level.jsx'
+import Player from './Player.jsx'
 
 export default function Experience()
 {
@@ -18,6 +19,7 @@ export default function Experience()
                 count={ 10 }
                 types={ [ BlockLimbo, BlockAxe, BlockSpinner ]}
             />
+            <Player />
         </Physics>
     </>
 }
