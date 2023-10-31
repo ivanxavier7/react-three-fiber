@@ -3274,6 +3274,420 @@ export default function Experience()
 # 11 - Physics
 
 
+# Physics
+
+1. Create World and Colliders
+2. Access the Body and Forces
+3. Physical Object
+4. Events
+5. Models
+6. Stress test and Invisible walls
+
+`Rapier`
+
+[Documentation](https://rapier.rs/docs/user_guides/javascript/getting_started_js/)
+[API](https://rapier.rs/javascript3d/index.html)
+[React Fiber Examples](https://github.com/pmndrs/react-three-rapier#readme)
+[More examples](https://docs.pmnd.rs/react-three-fiber/getting-started/examples)
+
+We must use thick plans to facilitate calculations, plans with minimum thickness create problems.
+
+
+## 11.1 - Create World and Colliders
+
+* `<Physics>` - Objects affected by forces
+* `<RigidBody>` - Defines the object as physical, we can put different meshes and will act as one object
+* Colliders - Shape of the rigid body, use `debug` to see them.
+
+Default Colliders:
+* ball
+* cuboid
+* hull
+* trimesh - avoid, for holes inside objects like donuts or terrain
+* custom - its scalable for complex models
+
+Don't change their position after attaching them to the object.
+If needed, use this method to reset your position without speed.
+
+Custom colliders references:
+* [Ball](https://rapier.rs/javascript3d/classes/Ball.html)
+* [Cube](https://rapier.rs/javascript3d/classes/Cuboid.html)
+* [Round Cube](https://rapier.rs/javascript3d/classes/RoundCuboid.html)
+* [Capsule](https://rapier.rs/javascript3d/classes/Capsule.html)
+* [Cone](https://rapier.rs/javascript3d/classes/Cone.html)
+* [Cylinder](https://rapier.rs/javascript3d/classes/Cylinder.html)
+* [Hull](https://rapier.rs/javascript3d/classes/ConvexPolyhedron.html)
+* [Trimesh](https://rapier.rs/javascript3d/classes/TriMesh.html)
+* [Heightfield](https://rapier.rs/javascript3d/classes/Heightfield.html)
+
+
+``` bash
+npm install @react-three/rapier@1.0
+```
+
+``` javascript
+import { RigidBody, Physics, CuboidCollider } from '@react-three/rapier'
+
+<Physics
+    debug
+>
+    <RigidBody
+        colliders="ball"
+    >
+        <mesh castShadow position={ [ - 2, 4.5, 0 ] }>
+            <sphereGeometry />
+            <meshStandardMaterial color="#9c571e" />
+        </mesh>
+    </RigidBody>
+    <RigidBody
+        colliders={ false }
+    >
+        <CuboidCollider
+            position={ [ - 2, 1, 0 ] }
+            rotation={ [Math.PI * 0.45, 0, 0] }
+            args={ [ 1, 1, 0.5] }
+        />
+        <mesh
+            castShadow
+            position={ [ - 2, 1, 0 ] }
+            rotation-x={ Math.PI * 0.45}
+        >
+            <torusGeometry />
+            <meshStandardMaterial color="#1e749c" />
+        </mesh>
+    </RigidBody>
+    <RigidBody
+        colliders="trimesh"
+    >
+        <mesh
+            castShadow position={ [ 3, 5, 3 ] }
+            rotation-x={ Math.PI * -0.05}
+        >
+            <torusGeometry />
+            <meshStandardMaterial color="#1e749c" />
+        </mesh>
+    </RigidBody>
+    <RigidBody>
+    <mesh
+        castShadow position={ [ 2, 2, 0 ] }
+        scale={ [0.2, 3, 3] }
+    >
+        <boxGeometry />
+        <meshStandardMaterial color="#685811" />
+    </mesh>
+    <mesh castShadow position={ [ 4, 2, 0 ] }>
+        <boxGeometry />
+        <meshStandardMaterial color="#d163d1" />
+    </mesh>
+    </RigidBody>
+    <RigidBody type="fixed">
+    <mesh receiveShadow position-y={ - 1.25 }>
+        <boxGeometry args={ [ 10, 0.5, 10 ] } />
+        <meshStandardMaterial color="#1f581f" />
+    </mesh>
+    </RigidBody>
+</Physics>
+```
+
+
+## 11.2 -  Access the Body and Forces
+
+Push
+* `addForce` - Continuous force like Wind
+* `addImpulse` - Impulse force for a very short time, projectile
+
+Rotate
+* `addTorque`
+* `applyTorqueImpulse`
+
+When objects are stationary, they start sleeping(`5 - Events`)
+
+``` javascript 
+const sphere = useRef()
+
+const sphereJump = () =>
+{
+    sphere.current.applyImpulse({ x: 0, y: 5, z: 0})
+    sphere.current.applyTorqueImpulse({
+        x: Math.random() - 0.5,
+        y: Math.random() - 0.5,
+        z: Math.random() - 0.5
+    })
+}
+
+<Physics
+    debug
+>
+    <RigidBody
+        ref={ sphere }
+        colliders="ball"
+    >
+        <mesh
+            castShadow
+            position={ [ - 2, 4.5, 0 ] }
+            onClick={ sphereJump }
+        >
+            <sphereGeometry />
+            <meshStandardMaterial color="#9c571e" />
+        </mesh>
+    </RigidBody>
+</Physics>
+```
+
+
+## 11.3 -  Physical Object
+
+* Friction: Default is `0.7`
+* Restitution / Bounciness: default is `0`
+* Mass: Impact the collisions, needs a `Custom Collider` to modify
+* Gravity: `-9.81` is the default (Hearth gravity), Moon is `-1.6`
+* Gravity Scale: Change the gravity of the object
+
+``` javascript
+const sphere = useRef()
+
+const sphereJump = () =>
+{
+    // Accessing Collision properties
+    console.log(sphere.current.mass()) 
+}
+
+<Physics
+    debug
+    gravity={ [0, -1.6, 0 ] }
+>
+    <RigidBody
+        ref={ sphere }
+        colliders={ false }
+        gravityScale={ 10 }
+        restitution={ 3 }
+        mass={ 10 }
+    >
+        <CuboidCollider
+            position={ [ - 2, 1, 0 ] }
+            rotation={ [Math.PI * 0.45, 0, 0] }
+            args={ [ 1, 1, 0.5] }
+        />
+        <mesh
+            castShadow
+            position={ [ - 2, 1, 0 ] }
+            rotation-x={ Math.PI * 0.45}
+            onClick={ sphereJump }
+        >
+            <torusGeometry />
+            <meshStandardMaterial color="#1e749c" />
+        </mesh>
+    </RigidBody>
+    <RigidBody
+        type="fixed"
+        friction={ 0.7 }
+    >
+        <mesh receiveShadow position-y={ - 1.25 }>
+            <boxGeometry args={ [ 10, 0.5, 10 ] } />
+            <meshStandardMaterial color="#1f581f" />
+        </mesh>
+    </RigidBody>
+</Physics>
+```
+
+
+## 11.4 -  Animate
+
+For cases where it is necessary to animate an object with a specific speed, such as an obstacle.
+
+It can be used to simulate a player moving at a specific speed and colliding with objects.
+
+
+* `kinematicPosition` - Next position to move
+* `kinematicVelocity` - Speed of the object
+
+``` javascript
+import { useRef } from 'react'
+import { useFrame } from '@react-three/fiber'
+import * as THREE from 'three'
+
+const twister = useRef()
+
+useFrame((state) =>
+{
+    const time = state.clock.getElapsedTime()
+    //console.log(time)
+
+    // Rotate
+    const eulerRotation = new THREE.Euler(0.2, time * 3, 0)
+    const quaternionRotation = new THREE.Quaternion()
+    quaternionRotation.setFromEuler(eulerRotation)
+    twister.current.setNextKinematicRotation(quaternionRotation)
+
+    // Go around
+    const angle = time * 0.5
+    const x = Math.cos(angle) * 5
+    const z = Math.sin(angle) * 5
+    twister.current.setNextKinematicTranslation( { x: x, y: 0, z: z } )
+})
+
+<RigidBody
+    ref={ twister }
+    friction={ 0 }
+    type='kinematicPosition'
+>
+    <mesh
+        castShadow
+        scale={ [ 0.4, 0.4, 6] }
+    >
+        <boxGeometry />
+        <meshStandardMaterial color="#6a6b13" />
+    </mesh>
+</RigidBody>
+```
+
+
+## 11.5 -  Events
+
+* `OnCollisionEnter` - Hit something
+* `OnCollisionExit` - Sperate from the hit object
+* `OnSleep` - Start sleeping
+* `onWake` - Stop sleeping
+
+
+When the object hits something it makes a `Sound`
+
+``` javascript
+const [ hitSound ] = useState( () => new Audio('./hit.mp3') )
+
+const collisionEnter = () =>
+{
+    hitSound.currentTime = 0
+    hitSound.volume = Math.random()
+    hitSound.play()
+}
+
+<Physics
+    debug
+    gravity={ [0, -1.6, 0 ] }
+>
+    <RigidBody
+        onCollisionEnter={ collisionEnter }
+    >
+        <mesh
+            castShadow
+            scale={ [ 0.4, 0.4, 6] }
+        >
+            <boxGeometry />
+            <meshStandardMaterial color="#6a6b13" />
+        </mesh>
+    </RigidBody>
+</Physics>
+```
+
+
+## 11.6 -  Models
+
+We must simplify the model collider as much as possible, for better performance.
+
+For better realist with easy implementation, use `hull` or `trimesh` colliders.
+
+The best option is to use multiple `custom colliders`.
+
+In the case of the hamburger, you should use a capsule with a cube simulating cheese, it will be more efficient than using Hull or trimesh and will have similar results.
+
+Check `Joints` from Rapier to attach objects like a robot.
+
+[Joint Documentation](https://rapier.rs/docs/user_guides/javascript/joints/)
+
+``` javascript
+import { useGLTF } from '@react-three/drei'
+import { CylinderCollider } from '@react-three/rapier'
+
+<RigidBody
+    colliders={ false }
+>
+    <CylinderCollider
+        position={ [ 8, 4, 4 ]}
+        args={[ 0.52, 1.25 ]}
+    />
+    <primitive
+        object={hamburger.scene}
+        scale={ 0.25 }
+        position={ [ 8, 4, 4 ]}
+    />
+</RigidBody>
+```
+
+## 11.7 -  Stress test and Invisible walls
+
+`<instanceMesh>` helps create thousands of object instances if necessary with a draw call, excellent for performance.
+
+Invisible walls and many objects to consume a lot of resources and how best to deal with it.
+
+To create invisible objects we just need to create collision objects without associated geometries.
+
+
+To set up colliders in multiple objects we need to wrap `<instanceMesh>`  inside `<InstancedRigidBodies>`  
+
+``` javascript
+import { CuboidCollider, InstancedRigidBodies } from '@react-three/rapier'
+import { useMemo, useEffect } from 'react'
+
+const objectCount = 1000
+const multipleObjectsRef = useRef()
+
+useEffect(() =>
+{
+    for(let i = 0; i < objectCount; i++) 
+    {
+        const matrix = new THREE.Matrix4()
+        matrix.compose(
+            new THREE.Vector3(i * 2, 0, 0),
+            new THREE.Quaternion(),
+            new THREE.Vector3(1, 1, 1)
+        )
+        multipleObjectsRef.current.setMatrixAt(i, matrix)
+    }
+}, [])
+
+const instances = useMemo(() =>
+{
+    const instances = []
+
+    for(let i = 0; i < objectCount; i++)
+    {
+        instances.push({
+            key: 'instance_' + i,
+            position: [
+                (Math.random() - 0.5) * 8,
+                6 + 1 * 0.2,
+                (Math.random() - 0.5) * 8
+            ],
+            rotation: [ Math.random(), Math.random(), Math.random()]
+        })
+    }
+
+    return instances
+}, [])
+
+<RigidBody
+    type="fixed"
+>
+    <CuboidCollider args={ [ 10, 6, 0.5 ] } position={ [ 0, 5, 10.25] }/>
+    <CuboidCollider args={ [ 10, 6, 0.5 ] } position={ [ 0, 5, -10.25] }/>
+    <CuboidCollider args={ [ 0.5, 6, 10 ] } position={ [ -10.25, 5, 0] }/>
+    <CuboidCollider args={ [ 0.5, 6, 10 ] } position={ [ 10.25, 5, 0] }/>
+</RigidBody>
+<InstancedRigidBodies instances={ instances }>
+    <instancedMesh
+        ref={ multipleObjectsRef }
+        args={ [ null, null, objectCount]}
+        castShadow
+        receiveShadow
+    >
+        <boxGeometry />
+        <meshStandardMaterial color='#5a0808' />
+    </instancedMesh>
+</InstancedRigidBodies>
+```
+
+
 ------
 
 
@@ -3283,7 +3697,7 @@ export default function Experience()
 2. Physics Game
 
 
-## 12.1 - Imported Model
+## 12.1.1 - Imported Model
 
 1. Get Models
 2. Optimize raycasting
@@ -3297,7 +3711,7 @@ export default function Experience()
 
 The model can be created using blender.
 
-## 12.1 - Get Models
+## 12.1.1 - Get Models
 
 Free models:
 * [Market](https://market.pmnd.rs/)
@@ -3311,7 +3725,7 @@ Check if they have `CC0 Licence` - Open Source
 
 Blender can also be used with some plugins to acquire free models, making editing easier.
 
-## 12.2 - Optimize raycasting
+## 12.1.2 - Optimize raycasting
 
 ``` javascript
 import { Bvh } from '@react-three/drei'
@@ -3321,7 +3735,7 @@ import { Bvh } from '@react-three/drei'
 </Bvh>
 ```
 
-## 12.3 - Create Component
+## 12.1.3 - Create Component
 
 We can export the model in other ways, such as downloading resources online, but it is not recommended in terms of performance, it will take a long time to load the resources.
 
@@ -3448,7 +3862,7 @@ export default function MacBook(props)
                     <mesh
                         castShadow
                         receiveShadow
-                        geometry={nodes.Circle012.geometry}
+                        geometry={nodes.Circle012.1.geometry}
                         material={materials.HingeBlack}
                     />
                     <mesh
@@ -3474,7 +3888,7 @@ export default function MacBook(props)
                     />
                   </group>
 
-                  <group position={[12.204, 0.031, 0.604]} scale={5.796}>
+                  <group position={[12.1.204, 0.031, 0.604]} scale={5.796}>
                     <mesh
                         castShadow
                         receiveShadow
@@ -3561,7 +3975,7 @@ export default function Experience()
 ```
 
 
-## 12.4 - Animated Environment Map
+## 12.1.4 - Animated Environment Map
 
 To get a good result with little work, we can use Environment Mapping to light our object.
 
@@ -3632,7 +4046,7 @@ export default function EnvRing({color, scale, speed})
 />
 ```
 
-## 12.5 - Floating Clouds
+## 12.1.5 - Floating Clouds
 
 Creation of black and floating clouds.
 
@@ -3677,12 +4091,12 @@ export default function FloatingClouds()
 }
 ```
 
-## 12.6 - Presentation Controls
+## 12.1.6 - Presentation Controls
 
 1. Object
 2. Camera
 
-### 12.6.1 - Object
+### 12.1.6.1 - Object
 
 Adds controls to move the object, the configuration created allows it to return to the initial position whenever the user releases the object and resumes its position with an animation of several jumps.
 
@@ -3692,7 +4106,7 @@ Adds controls to move the object, the configuration created allows it to return 
 
 ```
 
-### 12.6.2 - Camera
+### 12.1.6.2 - Camera
 
 Animate the camera in the scene.
 
@@ -3715,7 +4129,7 @@ import MacBook from './MacBook'
 </PresentationControls>
 ```
 
-## 12.7 - Shadows
+## 12.1.7 - Shadows
 
 It was not implemented in this project due to it being above the clouds, but it can be easily integrated this way.
 
@@ -3732,7 +4146,7 @@ import { ContactShadows } from '@react-three/drei'
 />
 ```
 
-## 12.8 - Lights
+## 12.1.8 - Lights
 
 Add a area light to simulate the screen
 
@@ -3747,7 +4161,7 @@ Add a area light to simulate the screen
 />
 ```
 
-## 12.9 - Iframe
+## 12.1.9 - Iframe
 
 Associates an HTML page in a plane, An inline frame is used to embed another document within the current HTML document.
 
@@ -3806,4 +4220,7 @@ Put this inside the object
 }
 ```
 
+
 ## 12.2 - Physics Game
+
+
