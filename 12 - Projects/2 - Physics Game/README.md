@@ -349,6 +349,7 @@ export function Level({
 
 ## 2 - Player
 
+We use `<KeyboardControls />` to control the player, within root we must say which keys to use, use `keyA` instead of `A` due to keyboards in other languages.
 
 `Index.jsx`
 ``` javascript
@@ -392,6 +393,7 @@ root.render(
 )
 ```
 
+When the player moves to one side there is an impulse and a change in the rotation of the ball. You can also jump if you wish, the next jump will only be possible when the distance from `Ray` to the ground is less than `0.15` units.
 
 `Player.jsx`
 ``` javascript
@@ -506,4 +508,12 @@ export default function Player()
         </mesh>
     </RigidBody>
 }
+```
+
+## 3 - Camera Animation
+
+
+
+``` javascript
+
 ```
