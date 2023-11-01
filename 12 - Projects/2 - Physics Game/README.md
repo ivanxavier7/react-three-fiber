@@ -540,3 +540,41 @@ useFrame((state, delta) =>
     state.camera.lookAt(cameraTarget)
 })
 ```
+
+## 4 - Shadows
+
+Shadows are calculated depending on the distance from the light that generates them, we can make the light follow the ball from above to avoid unnecessary calculations.
+
+Since we don't need to calculate the shadows behind the object, we move the shadow forward 4 units.
+
+`Lights.jsx`
+``` javascript
+import { useRef } from 'react'
+import { useFrame } from '@react-three/fiber'
+
+const light = useRef()
+
+useFrame((state) =>
+{
+    light.current.position.z = state.camera.position.z + 1 - 4
+    light.current.target.position.z = state.camera.position.z - 4
+    light.current.target.updateMatrixWorld()
+})
+
+return <>
+    <directionalLight
+        ref={ light}
+        castShadow
+        position={ [ 4, 4, 1 ] }
+        intensity={ 1.5 }
+        shadow-mapSize={ [ 1024, 1024 ] }
+        shadow-camera-near={ 1 }
+        shadow-camera-far={ 10 }
+        shadow-camera-top={ 10 }
+        shadow-camera-right={ 10 }
+        shadow-camera-bottom={ - 10 }
+        shadow-camera-left={ - 10 }
+    />
+    <ambientLight intensity={ 0.5 } />
+</>
+```
