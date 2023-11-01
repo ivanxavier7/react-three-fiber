@@ -512,8 +512,31 @@ export default function Player()
 
 ## 3 - Camera Animation
 
+Follow the object with a smooth animation.
 
+`lerp` makes the value slightly closer to the desired value but does not reach the object, slowing down the transition between positions.
 
 ``` javascript
+const [ smoothedCameraPosition ] = useState(() => new THREE.Vector3(20, 20, 20))
+const [ smoothedCameraTarget ] = useState(() => new THREE.Vector3())
 
+useFrame((state, delta) =>
+{
+    const bodyPosition = body.current.translation()
+
+    const cameraPosition = new THREE.Vector3()
+    cameraPosition.copy(bodyPosition)
+    cameraPosition.z += 2.25
+    cameraPosition.y += 0.65
+
+    const cameraTarget = new THREE.Vector3()
+    cameraTarget.copy(bodyPosition)
+    cameraTarget.y += 0.25
+
+    smoothedCameraPosition.lerp(cameraPosition, 5 * delta)
+    smoothedCameraTarget.lerp(cameraPosition, 5 * delta)
+
+    state.camera.position.copy(cameraPosition)
+    state.camera.lookAt(cameraTarget)
+})
 ```
