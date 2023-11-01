@@ -67,7 +67,7 @@ export default function Player()
 
     useEffect(() =>
     {
-        subscribeKeys(
+        const unsubscribeJump = subscribeKeys(
             (state) =>
             {
                 return state.jump
@@ -81,6 +81,11 @@ export default function Player()
                 }
             }
         )
+
+        return () =>
+        {
+            unsubscribeJump()
+        }
     }, [])
     
 
