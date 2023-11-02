@@ -4,7 +4,7 @@
 2. Player
 3. Camera Animation
 4. Shadows
-5. Interface
+5. Interface / HTML
 6. Mechanics
 
 
@@ -579,7 +579,195 @@ return <>
 </>
 ```
 
-## 5 - Interface
+
+## 5 - Interface / HTML
+
+1. Add font 
+2. Add Component
+3. CSS
+4. HTML Interface
+
+
+### 5.1 - Add font 
+
+Font sugestion:
+* [Bebas Neue](https://fonts.google.com/specimen/Bebas+Neue?query=bebas)
+
+`index.html`
+``` html
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+```
+
+
+### 5.2 - Add Component
+
+Add the component outside the `<Canvas>`.
+`index.jsx`
+``` javascript
+{/* ... */} 
+import { KeyboardControls } from '@react-three/drei'
+import Interface from './Interface.jsx'
+
+root.render(
+    <KeyboardControls
+        map={ [
+            {
+                name: 'forward',
+                keys: [ 'ArrowUp', 'KeyW']
+            },
+            {/* ... */} 
+        ]}
+    >
+        <Canvas
+            {/* ... */} 
+        >
+            <Experience />
+        </Canvas>
+        <Interface />
+    </KeyboardControls>
+)
+```
+
+
+### 5.3 - CSS
+
+Responsible for placing the `<div>` visible and in front of the canvas, creating the buttons and changing their color when the `active` class is added.
+
+`style.css`
+``` css
+.interface
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    font-family: 'Bebas Neue', cursive;
+}
+
+.time
+{
+    position: absolute;
+    top: 15%;
+    left: 0;
+    width: 100%;
+    color: #ebebeb;
+    font-size: 6vh;
+    background: #00000033;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.restart
+{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+    color: #ebebeb;
+    font-size: 80px;
+    background: #00000033;
+    padding-top: 10px;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.controls
+{
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+}
+
+.controls .raw
+{
+    display: flex;
+    justify-content: center;
+}
+
+.controls .key
+{
+    width: 40px;
+    height: 40px;
+    margin: 4px;
+    border: 2px solid #ffffff44;
+    background: #ffffff44;
+}
+
+.controls .key.large
+{
+    width: 144px;
+}
+
+.controls .key.active
+{
+    background-color: #d99ffa99;
+}
+```
+
+
+### 5.4 - HTML Interface
+
+Creation of HTML elements, we can see in the example a way to change the colors of the elements when a certain button is pressed.
+
+`Interface.jsx`
+``` javascript
+import { useKeyboardControls } from "@react-three/drei"
+
+export default function Interface()
+{
+
+    const [
+        forward,
+        backward,
+        leftward,
+        rightward,
+        jump
+    ] = useKeyboardControls((state) => {
+        return [
+            state.forward,
+            state.backward,
+            state.leftward,
+            state.rightward,
+            state.jump,
+        ]
+    })
+
+    return <div className="interface">
+        <div className="time">0.00</div>
+        <div className="restart">Restart</div>
+        <div className="controls">
+            <div className="raw">
+                <div className={ `key ${ forward ? 'active' : '' }` }></div>
+            </div>
+            <div className="raw">
+                <div className={ `key ${ leftward ? 'active' : '' }` }></div>
+                <div className={ `key ${ backward ? 'active' : '' }` }></div>
+                <div className={ `key ${ rightward ? 'active' : '' }` }></div>
+            </div>
+            <div className="raw">
+                <div className={ `key large ${ jump ? 'active' : '' }` }></div>
+            </div>
+        </div>
+    </div>
+}
+```
+
+
+## 6 - Mechanics
+
 
 ``` javascript
 
