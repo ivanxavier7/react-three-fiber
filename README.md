@@ -183,10 +183,36 @@ React - Data binding- application react to the data (event triggering)
         1. [Mesh Bounds / Geometries](https://github.com/ivanxavier7/react-three-fiber#981---mesh-bounds--geometries)
         2. [BVH](https://github.com/ivanxavier7/react-three-fiber#982---bvh--models-or-scene)
 
+
 10. [Post-processing]()
+
+    1. [Setup](https://github.com/ivanxavier7/react-three-fiber#101---setup)
+    2. [Blending / Coloring](https://github.com/ivanxavier7/react-three-fiber#102---blending--coloring)
+    3. [Effects](https://github.com/ivanxavier7/react-three-fiber#103---effects)
+
+        1. [Vignette](https://github.com/ivanxavier7/react-three-fiber#1031---vignette)
+        2. [Glitch](https://github.com/ivanxavier7/react-three-fiber#1032---glitch)
+        3. [Noise](https://github.com/ivanxavier7/react-three-fiber#1033---noise)
+        4. [Bloom](https://github.com/ivanxavier7/react-three-fiber#1034---bloom)
+
+            1. [Increase RGB levels](https://github.com/ivanxavier7/react-three-fiber#10341---increase-rgb-levels)
+            2. [Default Colors](https://github.com/ivanxavier7/react-three-fiber#10342---default-colors)
+
+        5. [Depth of Field](https://github.com/ivanxavier7/react-three-fiber#1035---depth-of-field)
+        6. [SSR (Screen Space Reflection)](https://github.com/ivanxavier7/react-three-fiber#1036---ssr-screen-space-reflection)
+
+    4. [Custom Effect](https://github.com/ivanxavier7/react-three-fiber#104---custom-effect)
 
 
 11. [Physics]()
+
+    1. [Create World and Colliders](https://github.com/ivanxavier7/react-three-fiber#111---create-world-and-colliders)
+    2. [Access the Body and Forces](https://github.com/ivanxavier7/react-three-fiber#112----access-the-body-and-forces)
+    3. [Physical Object](https://github.com/ivanxavier7/react-three-fiber#113----physical-object)
+    4. [Animate](https://github.com/ivanxavier7/react-three-fiber#114----animate)
+    5. [Events](https://github.com/ivanxavier7/react-three-fiber#115----events)
+    6. [Models](https://github.com/ivanxavier7/react-three-fiber#116----models)
+    7. [Stress test and Invisible walls](https://github.com/ivanxavier7/react-three-fiber#117----stress-test-and-invisible-walls)
 
 
 12. [Projects]()
@@ -2884,10 +2910,10 @@ import { Bvh } from '@react-three/drei'
 
 # 10 - Post-processing
 
-1. Setup
-2. Blending / Coloring
-3. Effects
-4. Custom Effect
+1. [Setup](https://github.com/ivanxavier7/react-three-fiber#101---setup)
+2. [Blending / Coloring](https://github.com/ivanxavier7/react-three-fiber#102---blending--coloring)
+3. [Effects](https://github.com/ivanxavier7/react-three-fiber#103---effects)
+4. [Custom Effect](https://github.com/ivanxavier7/react-three-fiber#104---custom-effect)
 
 Post-processing
 
@@ -2946,12 +2972,12 @@ console.log(BlendFunction) // List of options
 
 ## 10.3 - Effects
 
-1. Vignette
-2. Glitch
-3. Noise
-4. Bloom
-5. Depth of Field
-6. SSR (Screen Space Reflection)
+1. [Vignette](https://github.com/ivanxavier7/react-three-fiber#1031---vignette)
+2. [Glitch](https://github.com/ivanxavier7/react-three-fiber#1032---glitch)
+3. [Noise](https://github.com/ivanxavier7/react-three-fiber#1033---noise)
+4. [Bloom](https://github.com/ivanxavier7/react-three-fiber#1034---bloom)
+5. [Depth of Field](https://github.com/ivanxavier7/react-three-fiber#1035---depth-of-field)
+6. [SSR (Screen Space Reflection)](https://github.com/ivanxavier7/react-three-fiber#1036---ssr-screen-space-reflection)
 
 ### 10.3.1 - Vignette
 
@@ -3010,8 +3036,8 @@ import { BlendFunction } from 'postprocessing'
 
 ### 10.3.4 - Bloom
 
-1. Increase RGB levels
-2. Default Colors
+1. [Increase RGB levels](https://github.com/ivanxavier7/react-three-fiber#10341---increase-rgb-levels)
+2. [Default Colors](https://github.com/ivanxavier7/react-three-fiber#10342---default-colors)
 
 Make the objects glow.
 
@@ -3276,12 +3302,13 @@ export default function Experience()
 
 # Physics
 
-1. Create World and Colliders
-2. Access the Body and Forces
-3. Physical Object
-4. Events
-5. Models
-6. Stress test and Invisible walls
+1. [Create World and Colliders](https://github.com/ivanxavier7/react-three-fiber#111---create-world-and-colliders)
+2. [Access the Body and Forces](https://github.com/ivanxavier7/react-three-fiber#112----access-the-body-and-forces)
+3. [Physical Object](https://github.com/ivanxavier7/react-three-fiber#113----physical-object)
+4. [Animate](https://github.com/ivanxavier7/react-three-fiber#114----animate)
+5. [Events](https://github.com/ivanxavier7/react-three-fiber#115----events)
+6. [Models](https://github.com/ivanxavier7/react-three-fiber#116----models)
+7. [Stress test and Invisible walls](https://github.com/ivanxavier7/react-three-fiber#117----stress-test-and-invisible-walls)
 
 `Rapier`
 
@@ -3693,21 +3720,21 @@ const instances = useMemo(() =>
 
 # 12 - Projects
 
-1. Imported Model
-2. Physics Game
+1. [Imported Model](https://github.com/ivanxavier7/react-three-fiber#1211---imported-model)
+2. [Physics Game](https://github.com/ivanxavier7/react-three-fiber#122---physics-game)
 
 
 ## 12.1.1 - Imported Model
 
-1. Get Models
-2. Optimize raycasting
-3. Create Component
-4. Animated Environment Map
-5. Floating Clouds
-6. Presentation Controls / Camera
-7. Shadows
-8. Lights
-9. Iframe
+1. [Get Models](https://github.com/ivanxavier7/react-three-fiber#1211---get-models)
+2. [Optimize raycasting](https://github.com/ivanxavier7/react-three-fiber#1212---optimize-raycasting)
+3. [Create Component](https://github.com/ivanxavier7/react-three-fiber#1213---create-component)
+4. [Animated Environment Map](https://github.com/ivanxavier7/react-three-fiber#1214---animated-environment-map)
+5. [Floating Clouds](https://github.com/ivanxavier7/react-three-fiber#1215---floating-clouds)
+6. [Presentation Controls / Camera](https://github.com/ivanxavier7/react-three-fiber#1216---presentation-controls)
+7. [Shadows](https://github.com/ivanxavier7/react-three-fiber#1217---shadows)
+8. [Lights](https://github.com/ivanxavier7/react-three-fiber#1218---lights)
+9. [Iframe](https://github.com/ivanxavier7/react-three-fiber#1219---iframe)
 
 The model can be created using blender.
 
@@ -3979,8 +4006,6 @@ export default function Experience()
 
 To get a good result with little work, we can use Environment Mapping to light our object.
 
-``
-
 `EnvRing.jsx`
 ``` javascript
 import { Bvh } from '@react-three/drei'
@@ -4091,24 +4116,12 @@ export default function FloatingClouds()
 }
 ```
 
+
 ## 12.1.6 - Presentation Controls
-
-1. Object
-2. Camera
-
-### 12.1.6.1 - Object
 
 Adds controls to move the object, the configuration created allows it to return to the initial position whenever the user releases the object and resumes its position with an animation of several jumps.
 
 `PresentationControls`
-
-``` javascript
-
-```
-
-### 12.1.6.2 - Camera
-
-Animate the camera in the scene.
 
 ``` javascript
 import { PresentationControls } from '@react-three/drei'
