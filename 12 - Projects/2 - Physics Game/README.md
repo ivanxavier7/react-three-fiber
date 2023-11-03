@@ -5,7 +5,7 @@
 3. Camera Animation
 4. Shadows
 5. Interface / HTML
-6. Mechanics
+6. Global State
 
 
 ## 1 - Map Creation
@@ -500,7 +500,7 @@ export default function Player()
         <mesh
             castShadow
         >
-            <icosahedronBufferGeometry args={ [ 0.3, 1 ]} />
+            <icosahedronGeometry args={ [ 0.3, 1 ]} />
             <meshStandardMaterial
                 flatShading
                 color="#8049b3"
@@ -766,9 +766,200 @@ export default function Interface()
 ```
 
 
-## 6 - Mechanics
+## 6 - Global State
 
+Defines a strategy for sharing information between components and develop mechanics based on this integration.
+
+``` bash
+npm install zustand@4.3
+```
+
+`Zustand` allows you to create a global `state` to share information between different components.
+
+Use `hook` names like `useGame()`, `useSomething()`, to share the states globally.
+
+`subscribeWithSelector()` Allows the store to subscribe for changes.
+
+`stores/useGame.jsx`
+``` javascript
+import { create } from 'zustand'
+import { subscribeWithSelector } from 'zustand/middleware'
+
+export default create(subscribeWithSelector((set) =>
+{
+    return {
+        blocksCount: 10,
+        startTime: 0,
+        endTime: 0,
+        phase: 'ready',
+        blocksCount: 10,
+        blocksSeed: 0,
+        start: () =>
+        {
+            // state is used in this case to run things just one time
+            set((state) =>
+            {
+                if(state.phase === 'ready')
+                    return { phase: 'playing', startTime: Date.now() }
+                return {}
+
+            })
+        },
+        restart: () =>
+        {
+            set((state) =>
+            {
+                if(state.phase === 'playing' || state.phase === 'ended')
+                    return { phase: 'ready', blocksSeed: Math.random() }
+                return {}
+            })
+        },
+        end: () =>
+        {
+            set((state) =>
+            {   if(state.phase === 'playing')
+                    return { phase: 'ended', endTime: Date.now() }
+                return {}
+            })
+        }
+    }
+}))
+```
+
+Accessing information within the global state
+
+`Experience.jsx`
+``` javascript
+const blocksCount = useGame((state) => {
+    return state.blocksCount
+})
+
+const blocksSeed = useGame(state => {
+    return state.blocksSeed
+})
+
+<Physics
+    // debug
+>
+    <Lights />
+    <Level
+        count={ blocksCount }
+        seed={ blocksSeed }
+        types={ [ BlockLimbo, BlockAxe, BlockSpinner ]}
+    />
+    <Player />
+</Physics>
+```
+
+Add time counting to the interface.
+
+`Interface.jsx`
+``` javascript
+import useGame from './stores/useGame'
+import { useEffect, useRef } from 'react'
+import { addEffect } from "@react-three/fiber"
+
+const restart = useGame((state) => state.restart)
+
+const phase = useGame((state) => state.phase)
+
+const time = useRef()
+
+useEffect(() => {
+    const unsubcribeEffect = addEffect(() =>
+    {
+        //console.log('tick')
+        const state = useGame.getState()
+        //console.log(state)
+        let elapsedTime = 0
+
+        if(state.phase === 'playing')
+        {
+            elapsedTime = Date.now() - state.startTime
+        } else if(state.phase === 'ended')
+        {
+            elapsedTime = state.endTime - state.startTime
+        }
+
+        elapsedTime /= 1000
+        elapsedTime = elapsedTime.toFixed(2) // Round time
+
+        if(time.current) {
+            time.current.textContent = elapsedTime
+        }
+    })
+
+    return () =>
+    {
+        unsubcribeEffect()
+    }
+}, []);
+
+
+<div
+    ref={ time }
+    className="time"
+>
+    0.00
+</div>
+
+{ phase === 'ended' && <div className="restart" onClick={ restart }>Restart</div> }
+```
+
+Do something when we have a certain state and unsubscribe events when the component is destroyed.
 
 ``` javascript
+const reset = () =>
+{
+    body.current.setTranslation({ x: 0, y: 1, z: 0})    // Reset position
+    body.current.setLinvel({ x: 0, y: 0, z: 0})         // Linvel reset translation force
+    body.current.setAngvel({ x: 0, y: 0, z: 0})         // Angvel reset rotation force
+}
 
+useEffect(() =>
+{
+    // Subscribe phase in the store
+    const unsubscribeReset = useGame.subscribe(
+        (state) => state.phase,
+        (value) => 
+        {
+            if(value === 'ready')
+            {
+                reset()
+            }
+        })
+
+    const unsubscribeJump = subscribeKeys(
+        (state) => state.jump,
+        (value) =>
+        {
+            //console.log(value)
+            if(value)
+            {
+                jump()
+            }
+        }
+    )
+
+    // Start the game when any key is pressed
+    const unsubscribeKeys = subscribeKeys(
+        () =>
+        {
+            start()
+        }
+    )
+
+    return () =>
+    {
+        unsubscribeReset()
+        unsubscribeJump()
+        unsubscribeKeys()
+    }
+}, [])
+
+return <RigidBody
+    canSleep={ false }
+>
+
+</RigidBody>
 ```

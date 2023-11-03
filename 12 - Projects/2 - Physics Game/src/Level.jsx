@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import { CuboidCollider, RigidBody } from '@react-three/rapier'
 import { useMemo, useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { useGLTF } from '@react-three/drei'
+import { Float, Text, useGLTF } from '@react-three/drei'
 
 const boxGeometry = new THREE.BoxGeometry( 1, 1, 1)
 const floor1Material = new THREE.MeshStandardMaterial( { color:"#16691a" } )
@@ -15,6 +15,25 @@ export function BlockStart({ position = [ 0, 0, 0 ] })
     return <group
         position={ position }
     >
+        <Float
+            floatIntensity={ 0.5 }
+            rotationIntensity={ 0.5 }
+        >
+            <Text
+                scale={ 0.5 }
+                font='/bebas-neue-v9-latin-regular.woff'
+                maxWidth={ 0.25 }
+                lineHeight={ 0.75 }
+                textAlign='right'
+                position={ [ 0.75, 0.65, 0 ] }
+                rotation-y={ -0.25 }
+            >
+                Running Ball
+                <meshBasicMaterial
+                    toneMapped={ false }
+                />
+            </Text>
+        </Float>
         <mesh
             geometry={ boxGeometry }
             material={ floor1Material }
@@ -36,6 +55,16 @@ function BlockEnd({ position = [ 0, 0, 0 ] })
     return <group
         position={ position }
     >
+            <Text
+                scale={ 2 }
+                font='/bebas-neue-v9-latin-regular.woff'
+                position={ [ 0, 2.25, 2 ] }
+            >
+                FINISH
+                <meshBasicMaterial
+                    toneMapped={ false }
+                />
+            </Text>
         <mesh
             geometry={ boxGeometry }
             material={ floor1Material }
@@ -106,10 +135,12 @@ export function BlockSpinner({ position = [ 0, 0, 0 ] })
     useFrame((state) =>
     {
         const time = state.clock.getElapsedTime()
-
         const rotation = new THREE.Quaternion()
         rotation.setFromEuler(new THREE.Euler(0, time * speed, 0))
-        obstacle.current.setNextKinematicRotation(rotation)
+        if(obstacle.current)
+        {
+            obstacle.current.setNextKinematicRotation(rotation)
+        }
     })
 
     return <group
@@ -155,7 +186,10 @@ export function BlockLimbo({ position = [ 0, 0, 0 ] })
         const time = state.clock.getElapsedTime()
 
         const y = Math.sin(time + timeOffset) + 1.15
-        obstacle.current.setNextKinematicTranslation({ x: position[0], y: y, z: position[2] })
+        if(obstacle.current)
+        {
+            obstacle.current.setNextKinematicTranslation({ x: position[0], y: y, z: position[2] })
+        }
     })
 
     return <group
@@ -201,11 +235,14 @@ export function BlockAxe({ position = [ 0, 0, 0 ] })
         const time = state.clock.getElapsedTime() * 1.25
 
         const x = Math.sin(time + timeOffset)
-        obstacle.current.setNextKinematicTranslation({
-            x: position[0] + x,
-            y: position[1] + 0.75,
-            z: position[2]
-        })
+        if(obstacle.current)
+        {
+            obstacle.current.setNextKinematicTranslation({
+                x: position[0] + x,
+                y: position[1] + 0.75,
+                z: position[2]
+            })
+        }
     })
 
     return <group
@@ -243,7 +280,8 @@ export function BlockAxe({ position = [ 0, 0, 0 ] })
 
 export function Level({
     count= 5,
-    types = [ BlockSpinner, BlockAxe, BlockLimbo]
+    types = [ BlockSpinner, BlockAxe, BlockLimbo],
+    seed = 0
 })
 {
     // Create an array one time and only recreate when "count" or "types" changes.
@@ -258,7 +296,7 @@ export function Level({
         }
 
         return blocks
-    }, [ count, types ])
+    }, [ count, types, seed ])
 
     return <>
         <BlockStart position={ [ 0, 0, 0] } />
